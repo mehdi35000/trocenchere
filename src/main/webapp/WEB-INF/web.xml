@@ -14,4 +14,24 @@
     <servlet-name>ServletAccueil</servlet-name>
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletNouvelleVente</display-name>
+    <servlet-name>ServletNouvelleVente</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletNouvelleVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletNouvelleVente</servlet-name>
+    <url-pattern>/ServletNouvelleVente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInscriptionConnexion</display-name>
+    <servlet-name>ServletInscriptionConnexion</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletInscriptionConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInscriptionConnexion</servlet-name>
+    <url-pattern>/ServletInscriptionConnexion</url-pattern>
+  </servlet-mapping>
 </web-app>
