@@ -2,7 +2,11 @@ package trocenchere.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -16,17 +20,11 @@ import trocenchere.dal.jdbc.ConnectionProvider;
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletAccueil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try (Connection cnx = ConnectionProvider.getConnection()){
 			System.out.println("Message connection ok");
@@ -34,6 +32,7 @@ public class ServletAccueil extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

@@ -1,5 +1,5 @@
 package trocenchere.bo;
 
-public class Utilisateurs {
+public class Retrait {
 
 }
