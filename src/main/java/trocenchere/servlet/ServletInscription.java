@@ -8,21 +8,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-public class ServletInscriptionConnexion extends HttpServlet {
+/**
+ * Servlet implementation class ServletInscription
+ */
+public class ServletInscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscriptionConnexion.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/inscription.jsp");
 		rd.forward(request, response);
-	
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
