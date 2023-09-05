@@ -11,6 +11,7 @@
 	
 	<a href="ServletInscriptionConnexion">S'inscrire - se connecter</a>
 	<a href="ServletNouvelleVente">Vendre un article</a>
+	<a href="ServletAccueil">Déconnexion</a>
 	
 	
 	
