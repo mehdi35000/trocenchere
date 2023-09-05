@@ -14,4 +14,24 @@
     <servlet-name>ServletAccueil</servlet-name>
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletMonProfil</display-name>
+    <servlet-name>ServletMonProfil</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletMonProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletMonProfil</servlet-name>
+    <url-pattern>/ServletMonProfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletModifierMonProfil</display-name>
+    <servlet-name>ServletModifierMonProfil</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletModifierMonProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModifierMonProfil</servlet-name>
+    <url-pattern>/ServletModifierMonProfil</url-pattern>
+  </servlet-mapping>
 </web-app>
