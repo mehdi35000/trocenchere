@@ -59,4 +59,24 @@
     <servlet-name>ServletInscriptionConnexion</servlet-name>
     <url-pattern>/ServletInscriptionConnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletProfil</display-name>
+    <servlet-name>ServletProfil</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProfil</servlet-name>
+    <url-pattern>/ServletProfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEnchere</display-name>
+    <servlet-name>ServletEnchere</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletEnchere</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEnchere</servlet-name>
+    <url-pattern>/ServletEnchere</url-pattern>
+  </servlet-mapping>
 </web-app>
