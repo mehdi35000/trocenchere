@@ -15,10 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import trocenchere.dal.jdbc.ConnectionProvider;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,11 +33,6 @@ public class ServletAccueil extends HttpServlet {
 	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

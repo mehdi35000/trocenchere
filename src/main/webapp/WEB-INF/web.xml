@@ -52,6 +52,5 @@
   <servlet-mapping>
     <servlet-name>ServletInscriptionConnexion</servlet-name>
     <url-pattern>/ServletInscriptionConnexion</url-pattern>
->>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
   </servlet-mapping>
 </web-app>
