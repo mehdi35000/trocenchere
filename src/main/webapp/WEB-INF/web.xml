@@ -63,22 +63,24 @@
     <servlet-name>ServletProfil</servlet-name>
     <url-pattern>/ServletProfil</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
-    <display-name>ServletEnchere</display-name>
-    <servlet-name>ServletEnchere</servlet-name>
-    <servlet-class>trocenchere.servlet.ServletEnchere</servlet-class>
+
+    <display-name>ServletPageEncherir</display-name>
+    <servlet-name>ServletPageEncherir</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletPageEncherir</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletEnchere</servlet-name>
-    <url-pattern>/ServletEnchere</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
+    <servlet-name>ServletPageEncherir</servlet-name>
+    <url-pattern>/ServletPageEncherir</url-pattern>
+   </servlet-mapping>
+   <servlet>
+   <description></description>
     <display-name>ServletInscription</display-name>
     <servlet-name>ServletInscription</servlet-name>
     <servlet-class>trocenchere.servlet.ServletInscription</servlet-class>
-  </servlet>
+      </servlet>
   <servlet-mapping>
     <servlet-name>ServletInscription</servlet-name>
     <url-pattern>/ServletInscription</url-pattern>
