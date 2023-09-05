@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>ServletAccueil</welcome-file>
   </welcome-file-list>
-  <!-- ServletAccueil -->
   <servlet>
     <description></description>
     <display-name>ServletAccueil</display-name>
@@ -15,8 +14,6 @@
     <servlet-name>ServletAccueil</servlet-name>
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
-  
-  <!-- ServletMonProfil -->
   <servlet>
     <description></description>
     <display-name>ServletMonProfil</display-name>
@@ -27,8 +24,6 @@
     <servlet-name>ServletMonProfil</servlet-name>
     <url-pattern>/ServletMonProfil</url-pattern>
   </servlet-mapping>
-  
-  <!-- ServletModifierMonProfil -->
   <servlet>
     <description></description>
     <display-name>ServletModifierMonProfil</display-name>
@@ -39,8 +34,7 @@
     <servlet-name>ServletModifierMonProfil</servlet-name>
     <url-pattern>/ServletModifierMonProfil</url-pattern>
   </servlet-mapping>
-<!-- ServletNouvelleVente -->
-<servlet>
+  <servlet>
     <display-name>ServletNouvelleVente</display-name>
     <servlet-name>ServletNouvelleVente</servlet-name>
     <servlet-class>trocenchere.servlet.ServletNouvelleVente</servlet-class>
@@ -51,13 +45,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ServletInscriptionConnexion</display-name>
-    <servlet-name>ServletInscriptionConnexion</servlet-name>
-    <servlet-class>trocenchere.servlet.ServletInscriptionConnexion</servlet-class>
+    <display-name>ServletConnexion</display-name>
+    <servlet-name>ServletConnexion</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletConnexion</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletInscriptionConnexion</servlet-name>
-    <url-pattern>/ServletInscriptionConnexion</url-pattern>
+    <servlet-name>ServletConnexion</servlet-name>
+    <url-pattern>/ServletConnexion</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -78,5 +72,15 @@
   <servlet-mapping>
     <servlet-name>ServletEnchere</servlet-name>
     <url-pattern>/ServletEnchere</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInscription</display-name>
+    <servlet-name>ServletInscription</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletInscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInscription</servlet-name>
+    <url-pattern>/ServletInscription</url-pattern>
   </servlet-mapping>
 </web-app>
