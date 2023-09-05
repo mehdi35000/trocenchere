@@ -16,6 +16,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>ServletMonProfil</display-name>
     <servlet-name>ServletMonProfil</servlet-name>
     <servlet-class>trocenchere.servlet.ServletMonProfil</servlet-class>
@@ -33,5 +34,24 @@
   <servlet-mapping>
     <servlet-name>ServletModifierMonProfil</servlet-name>
     <url-pattern>/ServletModifierMonProfil</url-pattern>
+=======
+    <display-name>ServletNouvelleVente</display-name>
+    <servlet-name>ServletNouvelleVente</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletNouvelleVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletNouvelleVente</servlet-name>
+    <url-pattern>/ServletNouvelleVente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInscriptionConnexion</display-name>
+    <servlet-name>ServletInscriptionConnexion</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletInscriptionConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInscriptionConnexion</servlet-name>
+    <url-pattern>/ServletInscriptionConnexion</url-pattern>
+>>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
   </servlet-mapping>
 </web-app>
