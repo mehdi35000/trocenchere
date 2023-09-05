@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>ServletAccueil</welcome-file>
   </welcome-file-list>
-  <!-- ServletAccueil -->
   <servlet>
     <description></description>
     <display-name>ServletAccueil</display-name>
@@ -15,8 +14,6 @@
     <servlet-name>ServletAccueil</servlet-name>
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
-  
-  <!-- ServletMonProfil -->
   <servlet>
     <description></description>
     <display-name>ServletMonProfil</display-name>
@@ -27,8 +24,6 @@
     <servlet-name>ServletMonProfil</servlet-name>
     <url-pattern>/ServletMonProfil</url-pattern>
   </servlet-mapping>
-  
-  <!-- ServletModifierMonProfil -->
   <servlet>
     <description></description>
     <display-name>ServletModifierMonProfil</display-name>
@@ -39,8 +34,7 @@
     <servlet-name>ServletModifierMonProfil</servlet-name>
     <url-pattern>/ServletModifierMonProfil</url-pattern>
   </servlet-mapping>
-<!-- ServletNouvelleVente -->
-<servlet>
+  <servlet>
     <display-name>ServletNouvelleVente</display-name>
     <servlet-name>ServletNouvelleVente</servlet-name>
     <servlet-class>trocenchere.servlet.ServletNouvelleVente</servlet-class>
@@ -78,5 +72,15 @@
   <servlet-mapping>
     <servlet-name>ServletEnchere</servlet-name>
     <url-pattern>/ServletEnchere</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletPageEncherir</display-name>
+    <servlet-name>ServletPageEncherir</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletPageEncherir</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletPageEncherir</servlet-name>
+    <url-pattern>/ServletPageEncherir</url-pattern>
   </servlet-mapping>
 </web-app>
