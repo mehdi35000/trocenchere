@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>ServletAccueil</welcome-file>
   </welcome-file-list>
+  <!-- ServletAccueil -->
   <servlet>
     <description></description>
     <display-name>ServletAccueil</display-name>
@@ -14,9 +15,10 @@
     <servlet-name>ServletAccueil</servlet-name>
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
+  
+  <!-- ServletMonProfil -->
   <servlet>
     <description></description>
-<<<<<<< HEAD
     <display-name>ServletMonProfil</display-name>
     <servlet-name>ServletMonProfil</servlet-name>
     <servlet-class>trocenchere.servlet.ServletMonProfil</servlet-class>
@@ -25,6 +27,8 @@
     <servlet-name>ServletMonProfil</servlet-name>
     <url-pattern>/ServletMonProfil</url-pattern>
   </servlet-mapping>
+  
+  <!-- ServletModifierMonProfil -->
   <servlet>
     <description></description>
     <display-name>ServletModifierMonProfil</display-name>
@@ -34,7 +38,9 @@
   <servlet-mapping>
     <servlet-name>ServletModifierMonProfil</servlet-name>
     <url-pattern>/ServletModifierMonProfil</url-pattern>
-=======
+  </servlet-mapping>
+<!-- ServletNouvelleVente -->
+<servlet>
     <display-name>ServletNouvelleVente</display-name>
     <servlet-name>ServletNouvelleVente</servlet-name>
     <servlet-class>trocenchere.servlet.ServletNouvelleVente</servlet-class>
