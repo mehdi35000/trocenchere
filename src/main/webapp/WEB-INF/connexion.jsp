@@ -8,7 +8,26 @@
 </head>
 <body>
 
-	<a href="ServletNouvelleVente">S'inscrire</a>
+<h1>Connexion</h1>
+	<form action="ServletConnexion" method="POST">
+	
+	<label for="pseudo"> Identifiant :</label>
+	<input type="text" id="pseudo" name="pseudo" >
+	<br>
+	
+	<label for="motDePasse"> Mot de Passe :</label>
+	<input type="password" id="motDePasse" name="motDePasse">
+	<br>
+	</form>	
+	<input type="submit" value="Connexion">
+	<label for="seSouvenir"> Se souvenir de moi :</label>
+	<input type="checkbox" id="seSouvenir" name="seSouvenir">
+	
+	<a href="">Mot de passe oublié</a>
+	<br>
+	
+	
+	<a href="ServletInscription">Créer un compte</a>
 
 </body>
 </html>

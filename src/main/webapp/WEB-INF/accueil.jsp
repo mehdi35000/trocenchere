@@ -9,7 +9,7 @@
 <body>
 	<h1>Liste des enchères</h1>
 	
-	<a href="ServletInscriptionConnexion">S'inscrire - se connecter</a>
+	<a href="ServletConnexion">S'inscrire - se connecter</a>
 	<a href="ServletNouvelleVente">Vendre un article</a>
 	<a href="ServletAccueil">Déconnexion</a>
 	<a href="ServletMonProfil">Mon profil</a>
