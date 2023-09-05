@@ -4,14 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Accueil</title>
+<title>Connexion</title>
 </head>
 <body>
-	<h1>Liste des enchères</h1>
-	
-	<a href="ServletNouvelleVente">Nouvelle vente</a>
-	<a href="ServletInscriptionConnexion">S'inscrire - se connecter</a>
 
+	<a href="ServletNouvelleVente">S'inscrire</a>
 
 </body>
 </html>
