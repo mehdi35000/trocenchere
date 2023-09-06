@@ -47,14 +47,14 @@ public class Enchere {
 		return listeArticles;
 	}
 
-	public void setListeArticlesVendus(List<Article> listeArticles) {
+	public void setListeArticles(List<Article> listeArticles) {
 		this.listeArticles = listeArticles;
 	}
 
 	@Override
 	public String toString() {
 		return "Enchere [date_enchere=" + date_enchere + ", montant_enchere=" + montant_enchere + ", listeUtilisateurs="
-				+ listeUtilisateurs + ", listeArticlesVendus=" + listeArticles + "]";
+				+ listeUtilisateurs + ", listeArticles=" + listeArticles + "]";
 	}
 	
 	
