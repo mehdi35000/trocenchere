@@ -17,7 +17,7 @@ public class Utilisateur {
 	private String mot_de_passe;
 	private int credit;
 	private boolean administrateur;
-	private List<ArticleVendu>listeArticlesVendus = new ArrayList <ArticleVendu>();
+	private List<Article>listeArticles = new ArrayList <Article>();
 	
 	public Utilisateur() {}
 	
@@ -203,14 +203,14 @@ public class Utilisateur {
 
 
 
-	public List<ArticleVendu> getArticlesVendus() {
-		return listeArticlesVendus;
+	public List<Article> getArticles() {
+		return listeArticles;
 	}
 
 
 
-	public void setArticlesVendus(List<ArticleVendu> articlesVendus) {
-		this.listeArticlesVendus = articlesVendus;
+	public void setArticlesVendus(List<Article> articles) {
+		this.listeArticles = articles;
 	}
 
 	@Override
@@ -218,7 +218,7 @@ public class Utilisateur {
 		return "Utilisateur [id_utilisateur=" + id_utilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
 				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", code_postal="
 				+ code_postal + ", ville=" + ville + ", mot_de_passe=" + mot_de_passe + ", credit=" + credit
-				+ ", administrateur=" + administrateur + ", listeArticlesVendus=" + listeArticlesVendus + "]";
+				+ ", administrateur=" + administrateur + ", listeArticles=" + listeArticles + "]";
 	}
 
 	
