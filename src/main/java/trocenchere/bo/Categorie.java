@@ -7,7 +7,7 @@ public class Categorie {
 
 	private int id_categorie;
 	private String libelle;
-	private List<ArticleVendu>listeArticlesVendus = new ArrayList<ArticleVendu>();
+	private List<Article>listeArticles = new ArrayList<Article>();
 	
 	public Categorie() {}
 
@@ -33,18 +33,18 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 
-	public List<ArticleVendu> getListeArticlesVendus() {
-		return listeArticlesVendus;
+	public List<Article> getListeArticles() {
+		return listeArticles;
 	}
 
-	public void setListeArticlesVendus(List<ArticleVendu> listeArticlesVendus) {
-		this.listeArticlesVendus = listeArticlesVendus;
+	public void setListeArticlesVendus(List<Article> listeArticles) {
+		this.listeArticles = listeArticles;
 	}
 
 	@Override
 	public String toString() {
-		return "Categorie [id_categorie=" + id_categorie + ", libelle=" + libelle + ", listeArticlesVendus="
-				+ listeArticlesVendus + "]";
+		return "Categorie [id_categorie=" + id_categorie + ", libelle=" + libelle + ", listeArticles="
+				+ listeArticles + "]";
 	}
 	
 	

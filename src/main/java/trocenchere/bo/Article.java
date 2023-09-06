@@ -2,7 +2,7 @@ package trocenchere.bo;
 
 import java.time.LocalDate;
 
-public class ArticleVendu {
+public class Article {
 	
 	private int id_Article;
 	private String nom_article;
@@ -17,9 +17,9 @@ public class ArticleVendu {
 	private Utilisateur utilisateur;
 	private Categorie categorie;
 	
-	public ArticleVendu() {}
+	public Article() {}
 
-	public ArticleVendu(int id_Article, String nom_article, String description, LocalDate date_debut_encheres,
+	public Article(int id_Article, String nom_article, String description, LocalDate date_debut_encheres,
 			LocalDate date_fin_encheres, int mise_a_prix, int prix_vente, boolean etat_vente, Retrait retrait,
 			Enchere enchere, Utilisateur utilisateur, Categorie categorie) {
 		super();
@@ -135,7 +135,7 @@ public class ArticleVendu {
 
 	@Override
 	public String toString() {
-		return "ArticleVendu [id_Article=" + id_Article + ", nom_article=" + nom_article + ", description="
+		return "Article [id_Article=" + id_Article + ", nom_article=" + nom_article + ", description="
 				+ description + ", date_debut_encheres=" + date_debut_encheres + ", date_fin_encheres="
 				+ date_fin_encheres + ", mise_a_prix=" + mise_a_prix + ", prix_vente=" + prix_vente + ", etat_vente="
 				+ etat_vente + ", retrait=" + retrait + ", enchere=" + enchere + ", utilisateur=" + utilisateur

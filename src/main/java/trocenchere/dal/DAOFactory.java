@@ -1,6 +1,6 @@
 package trocenchere.dal;
 
-import trocenchere.dal.jdbc.ArticleVenduDAOImpl;
+import trocenchere.dal.jdbc.ArticleDAOImpl;
 import trocenchere.dal.jdbc.CategorieDAOImpl;
 import trocenchere.dal.jdbc.EnchereDAOImpl;
 import trocenchere.dal.jdbc.UtilisateurDAOImpl;
@@ -21,8 +21,8 @@ public class DAOFactory {
 		return new CategorieDAOImpl();
 	}
 	
-	public static ArticleVenduDAO getArticleVenduDAO() {
-		return new ArticleVenduDAOImpl();
+	public static ArticleDAO getArticleDAO() {
+		return new ArticleDAOImpl();
 	}
 	
 }
