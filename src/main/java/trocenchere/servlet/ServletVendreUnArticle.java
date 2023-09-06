@@ -9,18 +9,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class ServletPageEncherir extends HttpServlet {
+public class ServletVendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public ServletPageEncherir() {
+   
+    public ServletVendreUnArticle() {
         super();
-        
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pageEncherir.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/vendreUnArticle.jsp");
 		rd.forward(request, response);
 	}
 
