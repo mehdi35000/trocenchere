@@ -1,6 +1,12 @@
 package trocenchere.dal;
 
-public interface UtilisateurDAO {
+import trocenchere.bo.Utilisateur;
 
+public interface UtilisateurDAO {
+	
+	void insert(Utilisateur nouvelUtilisateur);
+	
 	void delete(int id_utilisateur);
+
+
 }
