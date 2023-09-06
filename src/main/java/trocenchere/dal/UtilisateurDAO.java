@@ -8,5 +8,7 @@ public interface UtilisateurDAO {
 	
 	void delete(int id_utilisateur);
 
+	Utilisateur connexionUtilisateur(String pseudo, String mot_de_passe);
+
 
 }

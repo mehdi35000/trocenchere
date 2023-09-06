@@ -18,8 +18,8 @@
 	<label for="motDePasse"> Mot de Passe :</label>
 	<input type="password" id="motDePasse" name="motDePasse">
 	<br>
-	</form>	
 	<input type="submit" value="Connexion">
+	</form>	
 	<label for="seSouvenir"> Se souvenir de moi :</label>
 	<input type="checkbox" id="seSouvenir" name="seSouvenir">
 	

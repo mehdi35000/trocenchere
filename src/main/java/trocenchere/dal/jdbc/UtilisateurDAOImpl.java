@@ -39,7 +39,13 @@ public void insert(Utilisateur nouvelUtilisateur) {
 		e.printStackTrace();
 	}
 }
-	
+
+@Override
+public Utilisateur connexionUtilisateur(String pseudo, String mot_de_passe) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 @Override
 public void delete(int id_utilisateur) {
 	try(Connection cnx = ConnectionProvider.getConnection()) {
@@ -50,5 +56,7 @@ public void delete(int id_utilisateur) {
 		e.printStackTrace();
 	}
 }
+
+
 	
 }

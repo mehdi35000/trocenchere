@@ -32,7 +32,7 @@ public class ServletInscription extends HttpServlet {
 		String code_postal = request.getParameter ("codePostal");
 		String ville = request.getParameter ("ville");
 		String mot_de_passe = request.getParameter ("motDePasse");
-		String confirm = request.getParameter ("confirm");
+		String confirm = request.getParameter ("confirmation");
 		
 		
 		if (mot_de_passe.equals (confirm)) {
@@ -52,8 +52,8 @@ public class ServletInscription extends HttpServlet {
 	        rd.forward(request, response);
 	    }
 		
-		System.out.println("mot_de_passe : " + mot_de_passe);
-		System.out.println("confirm : " + confirm);
+		//System.out.println("mot_de_passe : " + mot_de_passe);
+		// System.out.println("confirm : " + confirm);
 		 // pour le moment, lors d'une mauvaise insertion du mot de passe on retombe sur la page de connexion.
 		// Il faut faire la gestion des erreurs et notifier que les mots de passe ne sont pas les memes.
 	}
