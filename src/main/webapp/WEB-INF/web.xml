@@ -63,26 +63,54 @@
     <servlet-name>ServletProfil</servlet-name>
     <url-pattern>/ServletProfil</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
-
-    <display-name>ServletPageEncherir</display-name>
-    <servlet-name>ServletPageEncherir</servlet-name>
-    <servlet-class>trocenchere.servlet.ServletPageEncherir</servlet-class>
+    <display-name>ServletEncherir</display-name>
+    <servlet-name>ServletEncherir</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletEncherir</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletPageEncherir</servlet-name>
-    <url-pattern>/ServletPageEncherir</url-pattern>
-   </servlet-mapping>
-   <servlet>
-   <description></description>
+    <servlet-name>ServletEncherir</servlet-name>
+    <url-pattern>/ServletEncherir</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ServletInscription</display-name>
     <servlet-name>ServletInscription</servlet-name>
     <servlet-class>trocenchere.servlet.ServletInscription</servlet-class>
-      </servlet>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ServletInscription</servlet-name>
     <url-pattern>/ServletInscription</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAcquisition</display-name>
+    <servlet-name>ServletAcquisition</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletAcquisition</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAcquisition</servlet-name>
+    <url-pattern>/ServletAcquisition</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDetailVenteFinEnchere</display-name>
+    <servlet-name>ServletDetailVenteFinEnchere</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletDetailVenteFinEnchere</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDetailVenteFinEnchere</servlet-name>
+    <url-pattern>/ServletDetailVenteFinEnchere</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletVendreUnArticle</display-name>
+    <servlet-name>ServletVendreUnArticle</servlet-name>
+    <servlet-class>trocenchere.servlet.ServletVendreUnArticle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVendreUnArticle</servlet-name>
+    <url-pattern>/ServletVendreUnArticle</url-pattern>
   </servlet-mapping>
 </web-app>

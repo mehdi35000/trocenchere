@@ -4,29 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Page Encherir</title>
+<title>Acquisition</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+<h1>ENI-Enchères</h1>
 	
-	<h2>Détail vente</h2>
+	<h2>Vous avez remportez la vente</h2>
 	
 	<p>recup article</p>
 	<br>
 	<p>Description :</p>
 	<br>
-	<p>Catégorie :</p>
-	<br>
 	<p>Meilleur offre :</p>
 	<br>
 	<p>Mise à prix :</p>
 	<br>
-	<p>Fin de l'enchère :</p>
-	<br>
 	<p>Retrait :</p>
 	<br>
-	<p>Vendeur : </p>
-	<p> Ma proposition<input type="number" id="enchere" name="enchere" min="1" max="100000" /></p>
-	<a href="">Enchérir</a>
+	<p>Vendeur :</p>
+	<br>
+	<p>Tel : </p>
+	<a href=""><input type="button" value="Back" /></a>
 </body>
 </html>
