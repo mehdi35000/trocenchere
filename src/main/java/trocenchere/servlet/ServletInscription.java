@@ -35,17 +35,27 @@ public class ServletInscription extends HttpServlet {
 		String confirm = request.getParameter ("confirm");
 		
 		
-	
-		try {  
-			UtilisateurManager.getInstance().insert(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
+		if (mot_de_passe.equals (confirm)) {
+			try {  
+				UtilisateurManager.getInstance().insert(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
-			rd.forward(request, response);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+				rd.forward(request, response);
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			} catch (Exception e) {
+				  // Gérer les erreurs ici
+				e.printStackTrace();
+			}
+	    } else if (!mot_de_passe.equals(confirm)){
+	        // Les mots de passe ne correspondent pas, rediriger vers la page de connexion
+	        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
+	        rd.forward(request, response);
+	    }
+		
+		System.out.println("mot_de_passe : " + mot_de_passe);
+		System.out.println("confirm : " + confirm);
+		 // pour le moment, lors d'une mauvaise insertion du mot de passe on retombe sur la page de connexion.
+		// Il faut faire la gestion des erreurs et notifier que les mots de passe ne sont pas les memes.
 	}
 
 }
