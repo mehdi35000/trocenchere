@@ -19,7 +19,7 @@ public class UtilisateurManager {
 	
 	// inserer les methodes des requetes SQL
 	
-	//DELETE (pour supprimer profil)
+	//DELETE (pour supprimer profil) //ne marche pas complètement parce que c'est fait pour supprimer un profil parmi d'autres, mais pas l'utilisateur actuel.
 	public void delete(int id_utilisateur) {
 		DAOFactory.getUtilisateurDAO().delete(id_utilisateur);
 	}
