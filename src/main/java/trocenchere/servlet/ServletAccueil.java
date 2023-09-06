@@ -27,6 +27,7 @@ public class ServletAccueil extends HttpServlet {
 		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheres();
 		request.setAttribute("encheres", encheres);
 		System.out.println(encheres);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
 		
