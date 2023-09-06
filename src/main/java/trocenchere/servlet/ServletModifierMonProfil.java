@@ -19,9 +19,6 @@ public class ServletModifierMonProfil extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheres();
-		request.setAttribute("encheres", encheres);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierMonProfil.jsp");
 		rd.forward(request, response);
 		
