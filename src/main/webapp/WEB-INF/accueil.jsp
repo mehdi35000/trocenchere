@@ -14,23 +14,10 @@
 	<a href="ServletAccueil">Déconnexion</a>
 	<a href="ServletMonProfil">Mon profil</a>
 
-<table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Montant</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${encheres}" var="enchere">
-                <tr>
-                    <td>${enchere.id}</td>
-                    <td>${enchere.date_enchere}</td>
-                    <td>${enchere.montant_enchere}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+    <ul>
+        <c:forEach items="${encheres}" var="enchere">
+            <li>Date : ${enchere.date_enchere}, Montant : ${enchere.montant_enchere}</li>
+        </c:forEach>
+    </ul>
 </body>
 </html>
