@@ -13,7 +13,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import trocenchere.bll.ArticleManager;
 import trocenchere.bll.EnchereManager;
+import trocenchere.bo.Article;
 import trocenchere.bo.Enchere;
 import trocenchere.dal.jdbc.ConnectionProvider;
 
@@ -24,9 +26,9 @@ public class ServletAccueil extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheres();
-		request.setAttribute("encheres", encheres);
-		System.out.println(encheres);
+		List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
+		request.setAttribute("articlesEnVente", articlesEnVente);
+		System.out.println(articlesEnVente);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -44,3 +46,4 @@ public class ServletAccueil extends HttpServlet {
 	}
 
 }
+

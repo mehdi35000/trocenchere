@@ -1,5 +1,11 @@
 package trocenchere.bll;
 
+import java.util.List;
+
+import trocenchere.bo.Article;
+import trocenchere.dal.ArticleDAO;
+import trocenchere.dal.DAOFactory;
+
 public class ArticleManager {
 
 	// CREATION DU SINGLETON 
@@ -18,4 +24,7 @@ public class ArticleManager {
 	
 	// inserer les methodes des methodes SQL
 	
+	public List<Article> selectAllArticlesEnVente() {//throws BusinessException 
+		return DAOFactory.getArticleDAO().selectAllArticlesEnVente();
+	}
 }
