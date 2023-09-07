@@ -23,10 +23,14 @@
 	<h2>Bienvenue, <%= request.getParameter("utilisateur") %></h2>
 </c:if>
 
-    <ul>
-        <c:forEach items="${encheres}" var="enchere">
-            <li>Date : ${enchere.date_enchere}, Montant : ${enchere.montant_enchere}</li>
-        </c:forEach>
-    </ul>
+    <c:forEach items="${articlesEnVente}" var="article">
+        <li>
+            <h2>${article.nom_article}</h2>
+            <p>Date de début d'enchères : ${article.date_debut_encheres}</p>
+            <p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
+            <p>Prix initial : ${article.mise_a_prix}</p>
+            <p>Vendeur : ${article.utilisateur.pseudo}</p>
+        </li>
+    </c:forEach> 
 </body>
 </html>
