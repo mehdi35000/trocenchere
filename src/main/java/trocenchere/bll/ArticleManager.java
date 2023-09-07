@@ -1,9 +1,10 @@
 package trocenchere.bll;
 
 import java.time.LocalDate;
-
 import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
+import java.util.List;
+import trocenchere.dal.ArticleDAO;
 import trocenchere.dal.DAOFactory;
 
 public class ArticleManager {
@@ -28,6 +29,10 @@ public class ArticleManager {
 		Article nouvelArticle = new Article(nom_article, description, date_debut_encheres, date_fin_encheres, mise_a_prix, categorie);
 		DAOFactory.getArticleDAO().insert(nouvelArticle);
 		return nouvelArticle;
+	}
 
+	
+	public List<Article> selectAllArticlesEnVente() {//throws BusinessException 
+		return DAOFactory.getArticleDAO().selectAllArticlesEnVente();
 	}
 }

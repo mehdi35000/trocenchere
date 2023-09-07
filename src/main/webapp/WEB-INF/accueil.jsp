@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,23 +15,14 @@
 	<a href="ServletAccueil">Déconnexion</a>
 	<a href="ServletMonProfil">Mon profil</a>
 
-<table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Montant</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${encheres}" var="enchere">
-                <tr>
-                    <td>${enchere.id}</td>
-                    <td>${enchere.date_enchere}</td>
-                    <td>${enchere.montant_enchere}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+    <c:forEach items="${articlesEnVente}" var="article">
+        <li>
+            <h2>${article.nom_article}</h2>
+            <p>Date de début d'enchères : ${article.date_debut_encheres}</p>
+            <p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
+            <p>Prix initial : ${article.mise_a_prix}</p>
+            <p>Vendeur : ${article.utilisateur.pseudo}</p>
+        </li>
+    </c:forEach> 
 </body>
 </html>

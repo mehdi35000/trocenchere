@@ -17,11 +17,7 @@ public class ServletModifierMonProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheres();
-		request.setAttribute("encheres", encheres);
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierMonProfil.jsp");
 		rd.forward(request, response);
 		

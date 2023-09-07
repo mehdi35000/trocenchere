@@ -76,10 +76,19 @@ public class ServletVendreUnArticle extends HttpServlet {
 		}
 		System.out.println(mise_a_prix);
 		
+		Integer categorieEnchere =null;
+		
+		try {
+			categorieEnchere = Integer.parseInt(categorie);
+		} catch (DateTimeException e) {
+			e.printStackTrace();
+		}
+		System.out.println(categorieEnchere);
+		
 		
 
 		try {  
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorie  );
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieEnchere  );
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);

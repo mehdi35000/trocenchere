@@ -3,7 +3,6 @@ package trocenchere.bll;
 import java.util.List;
 
 import trocenchere.bo.Enchere;
-import trocenchere.dal.DAOFactory;
 import trocenchere.dal.EnchereDAO;
 
 public class EnchereManager {
@@ -24,10 +23,5 @@ public class EnchereManager {
 	
 	// inserer les methodes des requetes SQL
 	
-	private EnchereDAO enchereDAO = DAOFactory.getEnchereDAO();
-	
-	public List<Enchere> selectAllEncheres() {//throws BusinessException 
-		return enchereDAO.selectAllEncheres();
-	}
 	
 }//fin EnchereManager
