@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import trocenchere.bll.ArticleManager;
 import trocenchere.bll.UtilisateurManager;
+import trocenchere.bo.Categorie;
 
 import java.io.IOException;
 import java.time.DateTimeException;
@@ -48,7 +49,8 @@ public class ServletVendreUnArticle extends HttpServlet {
 		String dateFin = request.getParameter("dateFin");
 		
 		
-		LocalDate dateDebutEnchere =null;
+		LocalDate dateDebutEnchere =LocalDate.now();
+		request.setAttribute("dateDebut", dateDebutEnchere);
 		
 		try {
 			dateDebutEnchere = LocalDate.parse(dateDebut);
@@ -85,10 +87,12 @@ public class ServletVendreUnArticle extends HttpServlet {
 		}
 		System.out.println(categorieNumero);
 		
+		Categorie c = new Categorie();
+		c.setId_categorie(categorieNumero);
 		
 
 		try {  
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero  );
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);
