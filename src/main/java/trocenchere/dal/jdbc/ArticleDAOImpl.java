@@ -14,6 +14,7 @@ import trocenchere.dal.ArticleDAO;
 public class ArticleDAOImpl implements ArticleDAO{
 	private final static String SELECT_ALL_ARTICLESENVENTE = """
 			SELECT * FROM ARTICLES WHERE prix_vente IS NULL;""";
+	private final static String INSERT_ARTICLE ="INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)"; 
 			
 			@Override
 			public List<Article> selectAllArticlesEnVente() {
