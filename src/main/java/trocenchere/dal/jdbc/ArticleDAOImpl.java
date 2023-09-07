@@ -28,14 +28,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 			        	//afin de les mettre dans une liste articlesEnVente
 			            Article article = new Article(); 
 			            article.setNom_article(rs.getString("nom_article"));
+			            
 			            article.setDate_debut_encheres(rs.getDate("date_debut_encheres").toLocalDate());
 			            article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
 			            article.setMise_a_prix(rs.getInt("prix_initial"));
 			            article.setPrix_vente(rs.getInt("prix_vente"));
-      
-			            System.out.println(article);
 			            articlesEnVente.add(article);	
-			            System.out.println(articlesEnVente);
 			        }
 			    } catch (SQLException e) {
 			        e.printStackTrace();
