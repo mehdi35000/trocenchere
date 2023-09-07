@@ -105,7 +105,9 @@ public class ServletVendreUnArticle extends HttpServlet {
 		c.setId_categorie(categorieNumero);
 		
 
+
 		try {  
+
 
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
 

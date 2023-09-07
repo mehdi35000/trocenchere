@@ -1,6 +1,7 @@
 package trocenchere.dal.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,8 +14,8 @@ import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
 
 public class ArticleDAOImpl implements ArticleDAO{
-	/*private final static String SELECT_ALL_ARTICLESENVENTE = """
-			SELECT * FROM ARTICLES WHERE prix_vente IS NULL;""";*/
+	private final static String INSERT_ARTICLE ="INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)"; 
+
 	private final static String SELECT_ALL_ARTICLESENVENTE = """
 			SELECT
     articles.nom_article,
@@ -63,5 +64,16 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			    return articlesEnVente;
 			    
 			}
+			
+			public void insert(Article article) {
+				
+				try (Connection cnx = ConnectionProvider.getConnection()){
+				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);	
+					
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
 
 }

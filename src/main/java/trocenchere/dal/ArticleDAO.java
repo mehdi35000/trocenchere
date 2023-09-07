@@ -1,5 +1,6 @@
 package trocenchere.dal;
 
+
 import trocenchere.bo.Article;
 import java.util.List;
 
