@@ -11,6 +11,17 @@
 
 	<h1>Liste des enchères</h1>
 <!-- rajout du core, et menu conditionnel -->
+
+    <c:forEach items="${articlesEnVente}" var="article">
+        <li>
+            <h2>${article.nom_article}</h2>
+            <p>Date de début d'enchères : ${article.date_debut_encheres}</p>
+            <p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
+            <p>Prix initial : ${article.mise_a_prix}</p>
+            <p>Vendeur : ${article.utilisateur.pseudo}</p>
+        </li>
+    </c:forEach> 
+
 <c:if test="${empty idUtilisateur}">
 	<a href="ServletConnexion">S'inscrire - se connecter</a>
 </c:if>
@@ -23,14 +34,6 @@
 	<h2>Bienvenue, <%= request.getParameter("utilisateur") %></h2>
 </c:if>
 
-    <c:forEach items="${articlesEnVente}" var="article">
-        <li>
-            <h2>${article.nom_article}</h2>
-            <p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-            <p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-            <p>Prix initial : ${article.mise_a_prix}</p>
-            <p>Vendeur : ${article.utilisateur.pseudo}</p>
-        </li>
-    </c:forEach> 
+
 </body>
 </html>
