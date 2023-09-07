@@ -42,4 +42,5 @@ public class ArticleDAOImpl implements ArticleDAO{
 			    return articlesEnVente;
 			    
 			}
+
 }
