@@ -23,7 +23,7 @@ public class ArticleDAOImpl implements ArticleDAO{
     articles.date_fin_encheres,
     articles.prix_initial,
     articles.prix_vente,
-    utilisateurs.pseudo AS pseudo_proprietaire
+    utilisateurs.pseudo AS pseudo_propriétaire
 FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.id_utilisateur;"""; //WHERE articles.prix_vente IS NULL;""";
 
 			
@@ -48,10 +48,12 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			            
 			            // Récupérer le pseudo du propriétaire depuis le champ "pseudo_proprietaire"
 		                String pseudoVendeur = rs.getString("pseudo");
-		                Utilisateur vendeur = new Utilisateur(); // Créez l'objet Utilisateur si nécessaire
+		                Utilisateur vendeur = new Utilisateur();
 		                vendeur.setPseudo(pseudoVendeur);
-		                //article.setVendeur(vendeur); // Assurez-vous d'avoir une méthode pour définir le propriétaire
-			            //------
+		                System.out.println(pseudoVendeur);
+		                System.out.println(article);
+		                System.out.println(articlesEnVente);
+
 			            articlesEnVente.add(article);	
 			        }
 			    } catch (SQLException e) {
@@ -61,4 +63,5 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			    return articlesEnVente;
 			    
 			}
+
 }
