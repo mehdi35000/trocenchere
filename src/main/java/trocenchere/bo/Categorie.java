@@ -10,6 +10,8 @@ public class Categorie {
 	private List<Article>listeArticles = new ArrayList<Article>();
 	
 	public Categorie() {}
+	
+	
 
 	public Categorie(int id_categorie, String libelle) {
 		super();
