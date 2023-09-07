@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import trocenchere.bo.Article;
-import trocenchere.bo.Enchere;
 import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
 
 public class ArticleDAOImpl implements ArticleDAO{
+
 	private final static String INSERT_ARTICLE ="INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)"; 
+
 
 	private final static String SELECT_ALL_ARTICLESENVENTE = """
 			SELECT
@@ -24,7 +25,7 @@ public class ArticleDAOImpl implements ArticleDAO{
     articles.date_fin_encheres,
     articles.prix_initial,
     articles.prix_vente,
-    utilisateurs.pseudo AS pseudo_propriétaire
+    utilisateurs.pseudo AS pseudo_proprietaire
 FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.id_utilisateur;"""; //WHERE articles.prix_vente IS NULL;""";
 
 			
@@ -46,12 +47,15 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			            article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
 			            article.setMise_a_prix(rs.getInt("prix_initial"));
 			            article.setPrix_vente(rs.getInt("prix_vente"));
+			            //article
 			            
 			            // Récupérer le pseudo du propriétaire depuis le champ "pseudo_proprietaire"
-			            String pseudoVendeur = rs.getString("pseudo");
-			            Utilisateur vendeur = new Utilisateur();
-			            vendeur.setPseudo(pseudoVendeur);
-			            article.setUtilisateur(vendeur);
+
+		                String pseudoVendeur = rs.getString("pseudo_proprietaire");
+		                Utilisateur vendeur = new Utilisateur();
+		                vendeur.setPseudo(pseudoVendeur);
+		                //article.setUtilisateur(vendeur);
+
 		                System.out.println(pseudoVendeur);
 		                System.out.println(article);
 		                System.out.println(articlesEnVente);
