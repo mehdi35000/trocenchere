@@ -48,9 +48,10 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			            article.setPrix_vente(rs.getInt("prix_vente"));
 			            
 			            // Récupérer le pseudo du propriétaire depuis le champ "pseudo_proprietaire"
-		                String pseudoVendeur = rs.getString("pseudo");
-		                Utilisateur vendeur = new Utilisateur();
-		                vendeur.setPseudo(pseudoVendeur);
+			            String pseudoVendeur = rs.getString("pseudo");
+			            Utilisateur vendeur = new Utilisateur();
+			            vendeur.setPseudo(pseudoVendeur);
+			            article.setUtilisateur(vendeur);
 		                System.out.println(pseudoVendeur);
 		                System.out.println(article);
 		                System.out.println(articlesEnVente);
@@ -64,16 +65,22 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			    return articlesEnVente;
 			    
 			}
-			
-			public void insert(Article article) {
-				
-				try (Connection cnx = ConnectionProvider.getConnection()){
-				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);	
-					
-				}catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			
-
+//			
+//			public void insert(Article article) {
+//				
+//				try (Connection cnx = ConnectionProvider.getConnection()){
+//				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);	
+//				  pstmt.setString(1, article.getNom_article());
+//			        pstmt.setString(2, article.getDescription());
+//			        pstmt.setDate(3, java.sql.Date.valueOf(article.getDate_debut_encheres()));
+//			        pstmt.setDate(4, java.sql.Date.valueOf(article.getDate_fin_encheres()));
+//			        pstmt.setInt(5, article.getMise_a_prix());
+//			        pstmt.setInt(6, article.getUtilisateur().getId_utilisateur()); // Remplacez cela par l'ID de l'utilisateur approprié
+//			        pstmt.setInt(7, article.getCategorie().getId_categorie()); /
+//				}catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+//		}
+//			
+//
 }
