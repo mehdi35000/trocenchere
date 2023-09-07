@@ -19,11 +19,9 @@ public class ServletDeconnexion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		
 		session.invalidate();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
-		rd.forward(request, response);
+	    response.sendRedirect(request.getContextPath() + "/ServletAccueil");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
