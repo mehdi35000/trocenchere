@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Accueil</title>
-
+<!-- <link rel="stylesheet" type="text/css" href="/webapp/CSS/commun.css"> -->
 <style>
   .article {
     border: 1px solid #ccc; /* Bordure autour de chaque article */
