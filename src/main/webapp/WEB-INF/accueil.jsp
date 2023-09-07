@@ -39,7 +39,7 @@
 	<a href="ServletMonProfil">Mon profil</a>
 	<a href="ServletAccueil">Déconnexion</a>
 	
-	<h2>Bienvenue, <%= request.getParameter("utilisateur") %></h2>
+    <h2>Bienvenue, ${idUtilisateur}</h2>
 </c:if>
 
 

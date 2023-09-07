@@ -23,7 +23,6 @@ public class ServletConnexion extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
 		rd.forward(request, response);
 	
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
@@ -38,8 +37,8 @@ public class ServletConnexion extends HttpServlet {
 
 	    if (utilisateur != null) {
 	    	
-	        HttpSession session = request.getSession();
-	        session.setAttribute("utilisateur", utilisateur);
+	    	HttpSession session = request.getSession();
+	    	session.setAttribute("idUtilisateur", utilisateur.getPseudo());
 	        
 	    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);

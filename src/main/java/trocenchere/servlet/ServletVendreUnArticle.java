@@ -71,30 +71,29 @@ public class ServletVendreUnArticle extends HttpServlet {
 		
 		try {
 			mise_a_prix = Integer.parseInt(miseAprix);
-		} catch (DateTimeException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		System.out.println(mise_a_prix);
 		
-		Integer categorieEnchere =null;
+		Integer categorieNumero = -1; //// Valeur par défaut en cas d'erreur
 		
 		try {
-			categorieEnchere = Integer.parseInt(categorie);
-		} catch (DateTimeException e) {
+			categorieNumero = Integer.parseInt(categorie);
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		System.out.println(categorieEnchere);
+		System.out.println(categorieNumero);
 		
 		
 
 		try {  
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieEnchere  );
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero  );
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

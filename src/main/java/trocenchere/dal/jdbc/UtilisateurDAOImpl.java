@@ -56,12 +56,21 @@ public Utilisateur connexionUtilisateur(String pseudo, String mot_de_passe) {
 		pstmt.setString(1,pseudo);
 		pstmt.setString(2,mot_de_passe);
 		
-		pstmt.executeQuery();
+		rs = pstmt.executeQuery();
 		
 		if (rs.next()) {
 		utilisateur = new Utilisateur ();
 		utilisateur.setId_utilisateur(rs.getInt ("id_utilisateur"));
 		utilisateur.setPseudo(rs.getString ("pseudo"));
+		utilisateur.setNom(rs.getString ("nom"));
+		utilisateur.setEmail(rs.getString ("email"));
+		utilisateur.setTelephone(rs.getString ("telephone"));
+		utilisateur.setRue(rs.getString ("rue"));
+		utilisateur.setCode_postal(rs.getString ("code_postal"));
+		utilisateur.setVille(rs.getString ("ville"));
+		utilisateur.setMot_de_passe(rs.getString ("mot_de_passe"));
+		utilisateur.setCredit(rs.getInt ("credit"));
+		utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			
 		}
 		
@@ -69,7 +78,7 @@ public Utilisateur connexionUtilisateur(String pseudo, String mot_de_passe) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return null;
+	return utilisateur;
 }
 
 @Override
