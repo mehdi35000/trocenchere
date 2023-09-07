@@ -9,11 +9,23 @@ import java.util.List;
 
 import trocenchere.bo.Article;
 import trocenchere.bo.Enchere;
+import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
 
 public class ArticleDAOImpl implements ArticleDAO{
+	/*private final static String SELECT_ALL_ARTICLESENVENTE = """
+			SELECT * FROM ARTICLES WHERE prix_vente IS NULL;""";*/
 	private final static String SELECT_ALL_ARTICLESENVENTE = """
-			SELECT * FROM ARTICLES WHERE prix_vente IS NULL;""";
+			SELECT
+    articles.nom_article,
+    articles.description,
+    articles.date_debut_encheres,
+    articles.date_fin_encheres,
+    articles.prix_initial,
+    articles.prix_vente,
+    utilisateurs.pseudo AS pseudo_propriétaire
+FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.id_utilisateur;"""; //WHERE articles.prix_vente IS NULL;""";
+
 			
 			@Override
 			public List<Article> selectAllArticlesEnVente() {
@@ -33,6 +45,15 @@ public class ArticleDAOImpl implements ArticleDAO{
 			            article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
 			            article.setMise_a_prix(rs.getInt("prix_initial"));
 			            article.setPrix_vente(rs.getInt("prix_vente"));
+			            
+			            // Récupérer le pseudo du propriétaire depuis le champ "pseudo_proprietaire"
+		                String pseudoVendeur = rs.getString("pseudo");
+		                Utilisateur vendeur = new Utilisateur();
+		                vendeur.setPseudo(pseudoVendeur);
+		                System.out.println(pseudoVendeur);
+		                System.out.println(article);
+		                System.out.println(articlesEnVente);
+
 			            articlesEnVente.add(article);	
 			        }
 			    } catch (SQLException e) {

@@ -99,13 +99,20 @@ public class ServletVendreUnArticle extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(categorieNumero);
+<<<<<<< HEAD
+=======
 		
 		Categorie c = new Categorie();
 		c.setId_categorie(categorieNumero);
 		
+>>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 
 		try {  
+<<<<<<< HEAD
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero);
+=======
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
+>>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);
