@@ -108,7 +108,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 		try {  
 
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero);
 
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
 
