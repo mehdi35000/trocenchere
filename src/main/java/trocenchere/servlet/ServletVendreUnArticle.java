@@ -84,11 +84,9 @@ public class ServletVendreUnArticle extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(categorieNumero);
-		
-		
 
 		try {  
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero  );
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);
