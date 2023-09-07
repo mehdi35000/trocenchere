@@ -11,8 +11,11 @@ import trocenchere.bll.UtilisateurManager;
 import trocenchere.bo.Categorie;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 public class ServletVendreUnArticle extends HttpServlet {
@@ -25,6 +28,16 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date currentDate = new Date();
+	    String formattedDate = dateFormat.format(currentDate);
+
+	    // Stockez la date formatée dans un attribut de la requête
+	    request.setAttribute("currentDate", formattedDate);
+	    // Stockez la date formatée dans un attribut de la requête
+	    request.setAttribute("currentDate", formattedDate);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/vendreUnArticle.jsp");
 		rd.forward(request, response);
 	}
@@ -86,13 +99,19 @@ public class ServletVendreUnArticle extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(categorieNumero);
+
 		
 		Categorie c = new Categorie();
 		c.setId_categorie(categorieNumero);
 		
 
+
 		try {  
+
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,categorieNumero);
+
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
+
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 			rd.forward(request, response);
