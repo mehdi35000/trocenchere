@@ -65,10 +65,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	}
 
-	public void insert(Article article) {
+	public void insert(Article article,int utilisateurId) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+
 			// variable de la BO
 			pstmt.setString(1, article.getNom_article());
 			pstmt.setString(2, article.getDescription());
@@ -76,14 +77,16 @@ public class ArticleDAOImpl implements ArticleDAO {
 			pstmt.setDate(4, Date.valueOf(article.getDate_fin_encheres()));
 			pstmt.setInt(5, article.getMise_a_prix());
 			pstmt.setInt(6, article.getPrix_vente());
-			pstmt.setInt(7, article.getUtilisateur().getId_utilisateur());
+			
+			
+			pstmt.setInt(7, utilisateurId);
 			pstmt.setInt(8, article.getCategorie().getId_categorie());
 
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
 	}
-
 }

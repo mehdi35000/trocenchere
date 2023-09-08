@@ -11,13 +11,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import trocenchere.bll.ArticleManager;
 import trocenchere.bo.Categorie;
 
 
 public class ServletVendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    int utilisateurID;
    
     public ServletVendreUnArticle() {
         super();
@@ -25,7 +26,8 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+    	HttpSession session = request.getSession();
+    	utilisateurID= (int) session.getAttribute("idUtilisateur");
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	    Date currentDate = new Date();
 	    String formattedDate = dateFormat.format(currentDate);
@@ -103,8 +105,8 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 		try {  
 
-
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c  );
+			
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c,utilisateurID  );
 
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
