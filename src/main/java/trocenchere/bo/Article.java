@@ -152,6 +152,7 @@ public class Article {
 				+ etat_vente + ", retrait=" + retrait + ", enchere=" + enchere + ", utilisateur=" + utilisateur
 				+ ", categorie=" + categorie + "]";
 	}
-	
+
+
 	
 }

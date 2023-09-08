@@ -29,19 +29,11 @@
 			<li>Mise à prix : <input type="number" id="miseAprix"
 				name="miseAprix" min="1" max="100000" />
 			</li>
-<<<<<<< HEAD
-			<li>Début de l'enchère : <input id="dateDebut" name="dateDebut"
-				type="date" value="${dateDebut}" readonly />
-			</li>
-			<li>Fin de l'enchère : <input id="dateFin" name="dateFin"
-				type="date" value="" />
-			</li>
-=======
+
 			<li>Début de l'enchère : <input id="dateDebut" name="dateDebut" type="date" value="${currentDate}"  min="${currentDate}" /></li>
 
 			<li>Fin de l'enchère : <input id="dateFin" name="dateFin" type="date" value="${currentDate}" min="${currentDate}" /></li>
 			
->>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 		</ul>
 		<h2>Retrait</h2>
 		<p>Rue :</p>

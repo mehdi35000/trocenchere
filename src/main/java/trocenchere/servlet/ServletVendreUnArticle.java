@@ -1,21 +1,18 @@
 package trocenchere.servlet;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import trocenchere.bll.ArticleManager;
-import trocenchere.bll.UtilisateurManager;
-import trocenchere.bo.Categorie;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import trocenchere.bll.ArticleManager;
+import trocenchere.bo.Categorie;
 
 
 public class ServletVendreUnArticle extends HttpServlet {
@@ -89,7 +86,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		System.out.println(mise_a_prix);
 		
 		Integer categorieNumero = -1; //// Valeur par défaut en cas d'erreur
 		
@@ -98,7 +94,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		System.out.println(categorieNumero);
 
 		
 		Categorie c = new Categorie();

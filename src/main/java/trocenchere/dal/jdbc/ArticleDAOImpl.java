@@ -1,6 +1,7 @@
 package trocenchere.dal.jdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import trocenchere.bo.Article;
-import trocenchere.bo.Enchere;
 import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
 
 public class ArticleDAOImpl implements ArticleDAO{
-	private final static String INSERT_ARTICLE ="INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)"; 
+	private final static String INSERT_ARTICLE ="INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)VALUES (?,?,?,?,?,?,?,?);"; 
 
 	private final static String SELECT_ALL_ARTICLESENVENTE = """
 			SELECT
@@ -68,8 +68,19 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 			public void insert(Article article) {
 				
 				try (Connection cnx = ConnectionProvider.getConnection()){
-				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);	
-					
+				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+				// variable de la BO
+				pstmt.setString(1,article.getNom_article());
+				pstmt.setString(2,article.getDescription());
+				pstmt.setDate(3,Date.valueOf(article.getDate_debut_encheres()));
+				pstmt.setDate(4,Date.valueOf(article.getDate_fin_encheres()));
+				pstmt.setInt(5,article.getMise_a_prix());
+				pstmt.setInt(6,article.getPrix_vente());
+				pstmt.setInt(7,article.getUtilisateur().getId_utilisateur());
+				pstmt.setInt(8,article.getCategorie().getId_categorie());
+				
+				pstmt.executeUpdate();
+				
 				}catch (SQLException e) {
 					e.printStackTrace();
 				}

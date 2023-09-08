@@ -1,10 +1,10 @@
 package trocenchere.bll;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
-import java.util.List;
-import trocenchere.dal.ArticleDAO;
 import trocenchere.dal.DAOFactory;
 
 public class ArticleManager {
