@@ -1,5 +1,10 @@
 package trocenchere.bll;
 
+import java.util.List;
+
+import trocenchere.bo.Categorie;
+import trocenchere.dal.DAOFactory;
+
 public class CategorieManager {
 
 	// CREATION DU SINGLETON
@@ -16,5 +21,7 @@ public class CategorieManager {
 	
 	// FIN SINGLETON
 	
-	// inserer les methodes des requetes SQL
+	public List<Categorie> selectAllCategorie() {
+		return DAOFactory.getCategorieDAO().selectAllCategorie();
 }
+}	

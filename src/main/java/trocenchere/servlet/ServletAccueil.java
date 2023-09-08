@@ -14,8 +14,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import trocenchere.bll.ArticleManager;
+import trocenchere.bll.CategorieManager;
 import trocenchere.bll.EnchereManager;
 import trocenchere.bo.Article;
+import trocenchere.bo.Categorie;
 import trocenchere.bo.Enchere;
 import trocenchere.dal.jdbc.ConnectionProvider;
 
@@ -39,6 +41,10 @@ public class ServletAccueil extends HttpServlet {
 			e.printStackTrace();
 		}
 	
+		List<Categorie>  categorie = CategorieManager.getInstance().selectAllCategorie();
+		System.out.println(categorie.toString());
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import trocenchere.bll.ArticleManager;
+import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
 
 
@@ -43,6 +45,9 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
+		request.setAttribute("articlesEnVente", articlesEnVente);
 		
 		String article = request.getParameter("article");
 		System.out.println(article);
