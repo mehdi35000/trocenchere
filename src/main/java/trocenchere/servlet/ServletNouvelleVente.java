@@ -6,7 +6,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import trocenchere.bll.ArticleManager;
+import trocenchere.bo.Article;
+
 import java.io.IOException;
+import java.util.List;
 
 
 public class ServletNouvelleVente extends HttpServlet {
@@ -25,7 +29,9 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
 		doGet(request, response);
+		
 	}
 
 }

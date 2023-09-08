@@ -42,7 +42,7 @@ public class ServletInscription extends HttpServlet {
 			try {  
 				UtilisateurManager.getInstance().insert(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
 			
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
 				rd.forward(request, response);
 			
 			} catch (Exception e) {
