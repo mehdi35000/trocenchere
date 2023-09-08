@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Utilisateur {
-	
+
 	private int id_utilisateur;
 	private String pseudo;
 	private String nom;
@@ -17,13 +17,10 @@ public class Utilisateur {
 	private String mot_de_passe;
 	private int credit;
 	private boolean administrateur;
-	private List<Article>listeArticles = new ArrayList <Article>();
-	
-	public Utilisateur() {}
-	
-	
-	
+	private List<Article> listeArticles = new ArrayList<Article>();
 
+	public Utilisateur() {
+	}
 
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
@@ -41,12 +38,8 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-
-
-
-
 	public Utilisateur(int id_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue,String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 		super();
 		this.id_utilisateur = id_utilisateur;
 		this.pseudo = pseudo;
@@ -62,12 +55,9 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-
-
 	public int getId_utilisateur() {
 		return id_utilisateur;
 	}
-
 
 	public String getCode_postal() {
 		return code_postal;
@@ -81,133 +71,89 @@ public class Utilisateur {
 		this.id_utilisateur = id_utilisateur;
 	}
 
-
-
 	public String getPseudo() {
 		return pseudo;
 	}
-
-
 
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
 
-
-
 	public String getNom() {
 		return nom;
 	}
-
-
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-
-
 	public String getPrenom() {
 		return prenom;
 	}
-
-
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public String getTelephone() {
 		return telephone;
 	}
-
-
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
-
-
 	public String getRue() {
 		return rue;
 	}
-
-
 
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
 
-
-
 	public String getVille() {
 		return ville;
 	}
-
-
 
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
 
-
-
 	public String getMot_de_passe() {
 		return mot_de_passe;
 	}
-
-
 
 	public void setMot_de_passe(String mot_de_passe) {
 		this.mot_de_passe = mot_de_passe;
 	}
 
-
-
 	public int getCredit() {
 		return credit;
 	}
-
-
 
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
 
-
-
 	public boolean isAdministrateur() {
 		return administrateur;
 	}
-
-
 
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
 
-
-
 	public List<Article> getArticles() {
 		return listeArticles;
 	}
-
-
 
 	public void setArticlesVendus(List<Article> articles) {
 		this.listeArticles = articles;
@@ -220,11 +166,5 @@ public class Utilisateur {
 				+ code_postal + ", ville=" + ville + ", mot_de_passe=" + mot_de_passe + ", credit=" + credit
 				+ ", administrateur=" + administrateur + ", listeArticles=" + listeArticles + "]";
 	}
-
-	
-
-
-	
-	
 
 }
