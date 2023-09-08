@@ -114,7 +114,7 @@ public class ServletVendreUnArticle extends HttpServlet {
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c,utilisateurID  );
 
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
 			rd.forward(request, response);
 			
 		} catch (Exception e) {

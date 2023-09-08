@@ -42,14 +42,11 @@ public class ServletConnexion extends HttpServlet {
 	    	
 	    	HttpSession session = request.getSession();
 	        
-	    	List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
-			request.setAttribute("articlesEnVente", articlesEnVente);
-			System.out.println(articlesEnVente);
 			session.setAttribute("idUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("pseudoUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("idUtilisateur", utilisateur.getId_utilisateur());
 	    	
-	    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+	    	RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
 			rd.forward(request, response);
 			
 	    } else {

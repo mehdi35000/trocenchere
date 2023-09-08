@@ -30,7 +30,6 @@ public class ServletAccueil extends HttpServlet {
 		
 		List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
 		request.setAttribute("articlesEnVente", articlesEnVente);
-		System.out.println(articlesEnVente);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
