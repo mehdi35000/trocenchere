@@ -15,9 +15,13 @@ public class ServletMonProfil extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.getSession();
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/monprofil.jsp");
 		rd.forward(request, response);
+		
+		String username = (String) request.getSession().getAttribute("pseudoUtilisateur");
+		request.setAttribute("pseudoUtilisateur", username);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

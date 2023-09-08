@@ -10,6 +10,7 @@
 
 <h1>Mon profil</h1>
 
+<h2>Bienvenue, ${pseudoUtilisateur} !</h2>
 
 <a href="ServletModifierMonProfil"> Modifier mon profil </a>
 
