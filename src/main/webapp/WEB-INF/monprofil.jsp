@@ -10,6 +10,7 @@
 
 <h1>Mon profil</h1>
 
+
 <a href="ServletModifierMonProfil"> Modifier mon profil </a>
 
 <a href="ServletAccueil">Revenir à l'accueil</a>

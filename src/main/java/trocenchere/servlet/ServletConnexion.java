@@ -33,7 +33,7 @@ public class ServletConnexion extends HttpServlet {
 		
 		  // vérifier l'authentification
 	    UtilisateurDAO utilisateurDAO = new UtilisateurDAOImpl();
-	    Utilisateur utilisateur = utilisateurDAO.connexionUtilisateur(pseudo, mot_de_passe);
+	    Utilisateur utilisateur = utilisateurDAO.connexionUtilisateur(pseudo, mot_de_passe); //vérification sur l'utilisateur clé valeur
 
 	    if (utilisateur != null) {
 	    	

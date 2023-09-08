@@ -36,7 +36,7 @@
 </c:if>
 
 <c:if test="${not empty idUtilisateur}">
-	<a href="ServletNouvelleVente">Vendre un article</a>
+	<a href="ServletVendreUnArticle">Vendre un article</a>
 	<a href="ServletMonProfil">Mon profil</a>
 	<a href="ServletDeconnexion">Déconnexion</a>
 	
