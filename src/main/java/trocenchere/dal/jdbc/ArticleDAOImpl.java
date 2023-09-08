@@ -23,18 +23,6 @@ public class ArticleDAOImpl implements ArticleDAO{
 =======
 >>>>>>> branch 'master' of https://github.com/mehdi35000/trocenchere.git
 
-
-	/*private final static String SELECT_ALL_ARTICLESENVENTE = """
-			SELECT
-    articles.nom_article,
-    articles.description,
-    articles.date_debut_encheres,
-    articles.date_fin_encheres,
-    articles.prix_initial,
-    articles.prix_vente,
-    utilisateurs.pseudo 
-FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.id_utilisateur;"""; //WHERE articles.prix_vente IS NULL;"""; // à changer pour un truc qui combine les deux
-*/
 	private final static String SELECT_ALL_ARTICLES_A_VENDRE = """
 			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur;
 			""";
@@ -72,21 +60,6 @@ FROM ARTICLES INNER JOIN UTILISATEURS ON articles.id_utilisateur = utilisateurs.
 	            vendeur.setAdministrateur(rs.getBoolean("administrateur"));
 
 	            article.setUtilisateur(vendeur);
-	            //UtilisateurDAOImpl dao = new UtilisateurDAOImpl();//pour récupérer les infos de Flavie 
-	            //Utilisateur vendeur = dao.selectById( rs.getString("id_utilisateur")); //pour récupèrer l'id de l'utilisateur qui a mis l'article en vente pour avoir le pseudo associé au vendeur.
-	            //utilisateur.getPseudo ?? 
-	            
-	            /*
-                String pseudoVendeur = rs.getString("pseudo_proprietaire");
-                Utilisateur vendeur = new Utilisateur();
-                vendeur.setPseudo(pseudoVendeur);
-                //article.setUtilisateur(vendeur);
-                System.out.println(pseudoVendeur);
-                System.out.println(article);
-                System.out.println(articlesEnVente);
-                
-                article.setUtilisateur(vendeur);
-                */
 
 	            articlesEnVente.add(article);	
 	        }
