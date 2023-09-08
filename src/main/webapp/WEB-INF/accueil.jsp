@@ -19,7 +19,20 @@
 </head>
 <body>
 
-	<h1>Liste des enchères</h1>
+
+<c:if test="${empty idUtilisateur}">
+	<a href="ServletConnexion">S'inscrire - se connecter</a>
+</c:if>
+
+<c:if test="${not empty idUtilisateur}">
+    <h2>Bienvenue, ${idUtilisateur}</h2>
+	<a href="ServletVendreUnArticle">Vendre un article</a>
+	<a href="ServletMonProfil">Mon profil</a>
+	<a href="ServletDeconnexion">Déconnexion</a>
+</c:if>
+	
+
+    <h3>Liste des enchères</h3>
 
     <c:forEach items="${articlesEnVente}" var="article">
     	<div class="article">
@@ -31,17 +44,6 @@
         </div>
     </c:forEach> 
 
-<c:if test="${empty idUtilisateur}">
-	<a href="ServletConnexion">S'inscrire - se connecter</a>
-</c:if>
-
-<c:if test="${not empty idUtilisateur}">
-	<a href="ServletVendreUnArticle">Vendre un article</a>
-	<a href="ServletMonProfil">Mon profil</a>
-	<a href="ServletDeconnexion">Déconnexion</a>
-	
-    <h2>Bienvenue, ${idUtilisateur}</h2>
-</c:if>
 
 
 </body>
