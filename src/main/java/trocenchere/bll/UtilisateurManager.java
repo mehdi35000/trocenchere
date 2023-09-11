@@ -27,7 +27,7 @@ public class UtilisateurManager {
 	
 		Utilisateur nouvelUtilisateur = new Utilisateur (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);	
 		
-		System.out.println(nouvelUtilisateur);
+		//System.out.println(nouvelUtilisateur);
 		DAOFactory.getUtilisateurDAO().insert(nouvelUtilisateur);
 		
 		return nouvelUtilisateur;

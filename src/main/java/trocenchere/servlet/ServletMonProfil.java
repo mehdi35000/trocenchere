@@ -32,7 +32,6 @@ public class ServletMonProfil extends HttpServlet {
 	*/
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//problème : j'ai l'impression que ChatGPT considère que l'utilisateur choisit son id_utilisateur... :/
 	    Integer idUtilisateurInteger = (Integer) request.getSession().getAttribute("idUtilisateur"); //récupérer l'id de l'utilisateur depuis la session
 
 	    if (idUtilisateurInteger != null) { //vérifier si l'id est bien présent (utile ? )
