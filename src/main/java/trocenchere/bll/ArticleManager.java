@@ -5,6 +5,7 @@ import java.util.List;
 
 import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
+import trocenchere.dal.ArticleDAO;
 import trocenchere.dal.DAOFactory;
 
 public class ArticleManager {
@@ -33,5 +34,11 @@ public class ArticleManager {
 	
 	public List<Article> selectAllArticlesEnVente() {//throws BusinessException 
 		return DAOFactory.getArticleDAO().selectAllArticlesEnVente();
+	
+	}
+	
+	public Article selectArticlesById (int id_article) {
+		return DAOFactory.getArticleDAO().selectArticlesById(id_article);
+		
 	}
 }

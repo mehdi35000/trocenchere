@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur;
 			""";
 
+	private final static String SELECT_ARTICLES_BY_ID = "SELECT * FROM ARTICLES WHERE id_article = ?;";
+	
+	
 	@Override
 	public List<Article> selectAllArticlesEnVente() {
 		List<Article> articlesEnVente = new ArrayList<>();
@@ -88,5 +92,33 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 			e.printStackTrace();
 		}
+	}
+	
+	public Article selectArticlesById (int id_Article) {
+		
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		Article article = null;
+		try (Connection cnx = ConnectionProvider.getConnection()){
+			preparedStatement = cnx.prepareStatement(SELECT_ARTICLES_BY_ID);
+			preparedStatement.setInt(1, id_Article);
+			rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				int id_Article1 = rs.getInt("id_article");
+				String nomArticle = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate dateDebutEncheres = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFinEncheres = rs.getDate("date_fin_encheres").toLocalDate();
+				int mise_a_prix = rs.getInt("mise_a_prix");
+				int prix_vente = rs.getInt("prix_vente");
+				int id_utilisateur = rs.getInt("id_utilisateur");
+				int id_categorie = rs.getInt("id_categorie");
+				article = new Article(id_Article1, nomArticle, description, dateDebutEncheres, dateFinEncheres, mise_a_prix, prix_vente, id_utilisateur, id_categorie);
+			
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return article;
 	}
 }

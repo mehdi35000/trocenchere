@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,19 @@
 	<h1>ENI-Enchères</h1>
 	
 	<h2>Détail vente</h2>
+		<c:out value="${nomArticle}"></c:out>
 	
-	<p>recup article</p>
+	   	    <c:forEach items="${articlesEnVente}" var="article">
+        <c:if test="${article.id_Article == param.id_Article}">
+         <p>${article.nom_article}</p>
+        </c:if>
+    </c:forEach>
+	<p>${article.nom_article}</p>
 	<br>
-	<p>Description :</p>
+	<p>Description :<c:out value="${article.description}" /></p>
+
 	<br>
-	<p>Catégorie :</p>
+	<p>Catégorie : ${article.categorie}</p>
 	<br>
 	<p>Meilleur offre :</p>
 	<br>

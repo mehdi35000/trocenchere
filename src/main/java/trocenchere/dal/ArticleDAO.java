@@ -9,4 +9,6 @@ public interface ArticleDAO {
 	List<Article> selectAllArticlesEnVente();
 	
 	void insert(Article article,int utilisateurId); //throws BusinessException
+	
+	public Article selectArticlesById (int id_Article) ;
 }
