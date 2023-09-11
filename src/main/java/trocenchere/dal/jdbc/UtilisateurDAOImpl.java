@@ -16,7 +16,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE id_utilisateur = ?;";
-
+	
+	private final static String SELECT_UTILISATEUR_BYID = "SELECT id_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur \r\n"
+			+ "	FROM UTILISATEURS WHERE id_utilisateur = ?;";
+	
 	@Override
 	public void insert(Utilisateur nouvelUtilisateur) {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
@@ -90,5 +93,49 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//Méthode inutile car elle double la méthode connexionUtilisateur ??
+	@Override
+	public Utilisateur selectUtilisateurById(
+			int id_utilisateur) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Utilisateur utilisateurEnCours = null;
+		
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+
+			pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BYID);
+			pstmt.setInt(1, id_utilisateur);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				utilisateurEnCours = new Utilisateur();
+				utilisateurEnCours.setId_utilisateur(rs.getInt("id_utilisateur"));
+				utilisateurEnCours.setPseudo(rs.getString("pseudo"));
+				utilisateurEnCours.setNom(rs.getString("nom"));
+				utilisateurEnCours.setPrenom(rs.getString("prenom"));
+				utilisateurEnCours.setEmail(rs.getString("email"));
+				utilisateurEnCours.setTelephone(rs.getString("telephone"));
+				utilisateurEnCours.setRue(rs.getString("rue"));
+				utilisateurEnCours.setCode_postal(rs.getString("code_postal"));
+				utilisateurEnCours.setVille(rs.getString("ville"));
+				utilisateurEnCours.setMot_de_passe(rs.getString("mot_de_passe"));
+				utilisateurEnCours.setCredit(rs.getInt("credit"));
+				utilisateurEnCours.setAdministrateur(rs.getBoolean("administrateur"));
+				
+				//pour plus tard, si nécessaire ? 
+				utilisateurEnCours.setCredit(rs.getInt("credit"));
+	            utilisateurEnCours.setAdministrateur(rs.getBoolean("administrateur"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateurEnCours;
+	}
+		
 
 }

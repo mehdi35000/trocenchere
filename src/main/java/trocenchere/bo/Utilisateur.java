@@ -22,6 +22,29 @@ public class Utilisateur {
 	public Utilisateur() {
 	}
 
+	
+	public Utilisateur(int id_utilisateur) {
+		super();
+		this.id_utilisateur = id_utilisateur;
+	}
+
+
+	public Utilisateur(int id_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe) {
+		super();
+		this.id_utilisateur = id_utilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe = mot_de_passe;
+	}
+
+
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 		super();
