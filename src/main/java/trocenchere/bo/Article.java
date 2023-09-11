@@ -14,9 +14,7 @@ public class Article {
 	private boolean etat_vente;
 	private Retrait retrait;
 	private Enchere enchere;
-	private int id_utilisateur;
 	private Utilisateur utilisateur;
-	private int id_categorie;
 	private Categorie categorie;
 	
 	public Article() {}
@@ -77,8 +75,7 @@ public class Article {
 		this.date_fin_encheres = date_fin_encheres;
 		this.mise_a_prix = mise_a_prix;
 		this.prix_vente = prix_vente;
-		this.id_utilisateur = id_utilisateur;
-		this.id_categorie = id_categorie;
+
 	}
 
 
@@ -180,21 +177,6 @@ public class Article {
 	}
 
 
-	public int getId_utilisateur() {
-		return id_utilisateur;
-	}
-
-	public void setId_utilisateur(int id_utilisateur) {
-		this.id_utilisateur = id_utilisateur;
-	}
-
-	public int getId_categorie() {
-		return id_categorie;
-	}
-
-	public void setId_categorie(int id_categorie) {
-		this.id_categorie = id_categorie;
-	}
 
 	@Override
 	public String toString() {

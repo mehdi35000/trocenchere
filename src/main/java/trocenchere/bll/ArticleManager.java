@@ -38,7 +38,10 @@ public class ArticleManager {
 	}
 	
 	public Article selectArticlesById (int id_article) {
-		return DAOFactory.getArticleDAO().selectArticlesById(id_article);
+		Article articleAffiche = DAOFactory.getArticleDAO().selectArticlesById(id_article);
+		System.out.println("l'article affiche est " +articleAffiche);
+		return articleAffiche;
 		
 	}
+
 }

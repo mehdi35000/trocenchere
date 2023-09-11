@@ -11,29 +11,25 @@
 	<h1>ENI-Enchères</h1>
 	
 	<h2>Détail vente</h2>
-		<c:out value="${nomArticle}"></c:out>
 	
-	   	    <c:forEach items="${articlesEnVente}" var="article">
-        <c:if test="${article.id_Article == param.id_Article}">
-         <p>${article.nom_article}</p>
-        </c:if>
-    </c:forEach>
-	<p>${article.nom_article}</p>
+	<h3><p>${article.nom_article}</p></h3>
+	
 	<br>
 	<p>Description :<c:out value="${article.description}" /></p>
 
 	<br>
-	<p>Catégorie : ${article.categorie}</p>
+	<p>Catégorie : ${article.categorie.libelle}</p>
 	<br>
 	<p>Meilleur offre :</p>
 	<br>
-	<p>Mise à prix :</p>
+	<p>Mise à prix :${article.mise_a_prix}</p>
 	<br>
-	<p>Fin de l'enchère :</p>
+	<p>Fin de l'enchère : ${article.date_fin_encheres}</p>
 	<br>
 	<p>Retrait :</p>
 	<br>
-	<p>Vendeur : </p>
+	<p>Vendeur :${article.utilisateur.pseudo} </p>
+	<br>
 	<p> Ma proposition<input type="number" id="enchere" name="enchere" min="1" max="100000" /></p>
 	<a href=""><input type="button" value="Enchérir" /></a>
 </body>
