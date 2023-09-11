@@ -13,39 +13,39 @@
 	<form action="ServletAccueil" method="post">
 	<div>
 	<label for="pseudo">Pseudo :</label>
-    <input type="text" name="pseudo" value="${utilisateur.pseudo}">
+    <input type="text" name="pseudo" value="${utilisateurEnCours.pseudo}">
     </div>
     <div>
     <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" value="${utilisateur.prenom}">
+    <input type="text" name="prenom" value="${utilisateurEnCours.prenom}">
     </div>
     <div>
     <label for="nom">Nom :</label>
-    <input type="text" name="nom" value="${utilisateur.nom}">
+    <input type="text" name="nom" value="${utilisateurEnCours.nom}">
     </div>
     <div>
     <label for="email">Email :</label>
-    <input type="text" name="email" value="${utilisateur.email }">
+    <input type="text" name="email" value="${utilisateurEnCours.email }">
     </div>
     <div>
     <label for="telephone">Téléphone :</label>
-    <input type="text" name="telephone" value="${utilisateur.telephone }">
+    <input type="text" name="telephone" value="${utilisateurEnCours.telephone }">
     </div>
     <div>
     <label for="rue">Rue :</label>
-    <input type="text" name="rue" value="${utilisateur.rue }">
+    <input type="text" name="rue" value="${utilisateurEnCours.rue }">
     </div>
     <div>
     <label for="code_postal">Code postal :</label>
-    <input type="text" name="code_postal" value="${utilisateur.codePostal }">
+    <input type="text" name="code_postal" value="${utilisateurEnCours.code_postal }">
     </div>
     <div>
     <label for="ville">Ville :</label>
-    <input type="text" name="ville" value="${utilisateur.ville }">
+    <input type="text" name="ville" value="${utilisateurEnCours.ville }">
     </div>
     <div>
     <label for="mdpactuel">Mot de passe actuel :</label>
-    <input type="text" name="mdpactuel" value="${utilisateur.mdp }">
+    <input type="text" name="mdpactuel" value="${utilisateurEnCours.mot_de_passe }">
     </div>
     <div>
     <label for="nv_mdp">Nouveau mot de passe :</label>
@@ -60,8 +60,10 @@
     <input value="${credit }">
     </div>
 
-		<input class="btn btn-primary mb-2" type="submit" value="enregistrer">
-		<input class="btn btn-primary mb-2" type="submit" value="supprimer le profil">
+<div>
+		<input class="btn btn-primary mb-2" type="submit" value="Enregistrer">
+		<input class="btn btn-primary mb-2" type="submit" value="Supprimer le profil">
+</div>
 	</form>
 </body>
 </html>

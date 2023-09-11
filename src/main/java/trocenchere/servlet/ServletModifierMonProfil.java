@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import trocenchere.bll.EnchereManager;
+import trocenchere.bll.UtilisateurManager;
 import trocenchere.bo.Enchere;
+import trocenchere.bo.Utilisateur;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +20,14 @@ public class ServletModifierMonProfil extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		
+		Integer idUtilisateurInteger = (Integer) request.getSession().getAttribute("idUtilisateur"); //récupérer l'id de l'utilisateur depuis la session
+
+	    if (idUtilisateurInteger != null) { //vérifier si l'id est bien présent (utile ? )
+	        Utilisateur utilisateurEnCours = UtilisateurManager.getInstance().selectUtilisateurById(idUtilisateurInteger);//utiliser l'ID pour récupérer l'utilisateur
+	        request.setAttribute("utilisateurEnCours", utilisateurEnCours); //placer l'utilisateur dans la requête pour l'affichage dans la jsp
+	    }
+	    
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierMonProfil.jsp");
 		rd.forward(request, response);
 		
