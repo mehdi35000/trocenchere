@@ -3,6 +3,8 @@ package trocenchere.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import trocenchere.bll.CategorieManager;
+
 public class Categorie {
 
 	private int id_categorie;
@@ -12,6 +14,11 @@ public class Categorie {
 	public Categorie() {}
 	
 	
+
+	public Categorie(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 
 	public Categorie(int id_categorie, String libelle) {
 		super();
@@ -48,8 +55,6 @@ public class Categorie {
 		return "Categorie [id_categorie=" + id_categorie + ", libelle=" + libelle + ", listeArticles="
 				+ listeArticles + "]";
 	}
-	
-	
-	
-	
+
+
 }

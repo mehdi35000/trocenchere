@@ -48,6 +48,38 @@ public class Article {
 		this.categorie = categorie;
 	}
 
+	
+	
+	public Article(int id_Article, String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int mise_a_prix, int prix_vente, Utilisateur utilisateur,
+			Categorie categorie) {
+		super();
+		this.id_Article = id_Article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.mise_a_prix = mise_a_prix;
+		this.prix_vente = prix_vente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+	}
+
+	public Article(int id_Article, String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int mise_a_prix, int prix_vente, int id_utilisateur, int id_categorie) {
+		super();
+		this.id_Article = id_Article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.mise_a_prix = mise_a_prix;
+		this.prix_vente = prix_vente;
+
+	}
+
+
+
 	public int getId_Article() {
 		return id_Article;
 	}
@@ -144,6 +176,8 @@ public class Article {
 		this.categorie = categorie;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Article [id_Article=" + id_Article + ", nom_article=" + nom_article + ", description="
@@ -152,7 +186,5 @@ public class Article {
 				+ etat_vente + ", retrait=" + retrait + ", enchere=" + enchere + ", utilisateur=" + utilisateur
 				+ ", categorie=" + categorie + "]";
 	}
-
-
 	
 }

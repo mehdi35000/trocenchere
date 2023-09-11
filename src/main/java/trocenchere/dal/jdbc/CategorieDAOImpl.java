@@ -7,12 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
 import trocenchere.dal.CategorieDAO;
 
 public class CategorieDAOImpl implements CategorieDAO {
 
 	public static final String SELECT_ALL_CATEGORIE = "SELECT * FROM CATEGORIES ;";
+	// private static final String SELECT_ALL_CATEGORIE = "SELECT no_categorie,
+	// libelle FROM CATEGORIES ORDER BY no_categorie";
+	private static final String SELECT_CATEGORIE_BY_ID = "SELECT * FROM CATEGORIES WHERE id_categorie = ?;";
 
 	public List<Categorie> selectAllCategorie() {
 		List<Categorie> categories = new ArrayList<Categorie>();
@@ -37,6 +41,28 @@ public class CategorieDAOImpl implements CategorieDAO {
 		}
 
 		return categories;
+	}
+
+	@Override
+	public Categorie selectCategorieById(int id_Categorie) {
+
+		Categorie categorie = new Categorie();
+		
+		try (Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement psmt = cnx.prepareStatement(SELECT_CATEGORIE_BY_ID)) {
+			
+			psmt.setInt(1, id_Categorie);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				categorie.setId_categorie(rs.getInt("id_categorie"));
+				categorie.setLibelle(rs.getString("libelle"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return categorie;
+
 	}
 
 }

@@ -8,5 +8,7 @@ public interface CategorieDAO {
 
 	List<Categorie> selectAllCategorie();
 
+	public Categorie selectCategorieById(int id_Categorie);
+
 
 }

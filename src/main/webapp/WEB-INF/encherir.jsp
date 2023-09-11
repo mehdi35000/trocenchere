@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,21 +12,24 @@
 	
 	<h2>Détail vente</h2>
 	
-	<p>recup article</p>
+	<h3><p>${article.nom_article}</p></h3>
+	
 	<br>
-	<p>Description :</p>
+	<p>Description :<c:out value="${article.description}" /></p>
+
 	<br>
-	<p>Catégorie :</p>
+	<p>Catégorie : ${article.categorie.libelle}</p>
 	<br>
 	<p>Meilleur offre :</p>
 	<br>
-	<p>Mise à prix :</p>
+	<p>Mise à prix :${article.mise_a_prix}</p>
 	<br>
-	<p>Fin de l'enchère :</p>
+	<p>Fin de l'enchère : ${article.date_fin_encheres}</p>
 	<br>
 	<p>Retrait :</p>
 	<br>
-	<p>Vendeur : </p>
+	<p>Vendeur :${article.utilisateur.pseudo} </p>
+	<br>
 	<p> Ma proposition<input type="number" id="enchere" name="enchere" min="1" max="100000" /></p>
 	<a href=""><input type="button" value="Enchérir" /></a>
 </body>

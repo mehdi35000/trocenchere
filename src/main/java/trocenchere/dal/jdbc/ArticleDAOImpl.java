@@ -6,12 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import trocenchere.bo.Article;
+import trocenchere.bo.Categorie;
 import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
+import trocenchere.dal.DAOFactory;
 
 public class ArticleDAOImpl implements ArticleDAO {
 	private final static String INSERT_ARTICLE = "INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)VALUES (?,?,?,?,?,?,?,?);";
@@ -20,6 +23,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur;
 			""";
 
+	private final static String SELECT_ARTICLES_BY_ID = "SELECT * FROM ARTICLES WHERE id_article = ?;";
+	
+	
 	@Override
 	public List<Article> selectAllArticlesEnVente() {
 		List<Article> articlesEnVente = new ArrayList<>();
@@ -33,6 +39,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 				// base de données
 				// afin de les mettre dans une liste articlesEnVente
 				Article article = new Article();
+				article.setId_Article(rs.getInt("id_article"));
 				article.setNom_article(rs.getString("nom_article"));
 				article.setDate_debut_encheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
@@ -88,5 +95,36 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 			e.printStackTrace();
 		}
+	}
+	
+	public Article selectArticlesById (int id_Article) {
+		
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		Article article = null;
+		try (Connection cnx = ConnectionProvider.getConnection()){
+			preparedStatement = cnx.prepareStatement(SELECT_ARTICLES_BY_ID);
+			preparedStatement.setInt(1, id_Article);
+			rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				int id_Article1 = rs.getInt("id_article");
+				String nomArticle = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate dateDebutEncheres = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFinEncheres = rs.getDate("date_fin_encheres").toLocalDate();
+				int prix_initial = rs.getInt("prix_initial");
+				int prix_vente = rs.getInt("prix_vente");
+				int id_utilisateur = rs.getInt("id_utilisateur");
+				int id_categorie = rs.getInt("id_categorie");
+
+				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(id_categorie);
+				Utilisateur utilisteur = DAOFactory.getUtilisateurDAO().selectUtilisateurById(id_utilisateur);
+					
+				article = new Article(id_Article1, nomArticle, description, dateDebutEncheres, dateFinEncheres, prix_initial, prix_vente, utilisteur, categorie);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return article;
 	}
 }

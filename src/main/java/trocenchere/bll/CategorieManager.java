@@ -23,5 +23,12 @@ public class CategorieManager {
 	
 	public List<Categorie> selectAllCategorie() {
 		return DAOFactory.getCategorieDAO().selectAllCategorie();
+	}
+	
+	public Categorie selectCategorieById(int id_categorie) {
+		Categorie categorieAffiche = DAOFactory.getCategorieDAO().selectCategorieById(id_categorie);
+		System.out.println("La categorie de l'article affiché est " + categorieAffiche);
+		return categorieAffiche;
+	}
 }
-}	
+	
