@@ -45,7 +45,7 @@
     </div>
     <div>
     <label for="mdpactuel">Mot de passe actuel :</label>
-    <input type="text" name="mdpactuel" value="${utilisateurEnCours.mot_de_passe }">
+    <input type="text" name="mdpactuel" value="">
     </div>
     <div>
     <label for="nv_mdp">Nouveau mot de passe :</label>
@@ -56,12 +56,12 @@
     <input type="text" name="conf_nv_mdp" value="">
     </div>
     <div>
-    <label for="credit">Crédit :</label>
-    <input value="${credit }">
+    <div>
+    Crédit : ${utilisateurEnCours.credit}
     </div>
 
 <div>
-		<input class="btn btn-primary mb-2" type="submit" value="Enregistrer">
+		<input class="btn btn-primary mb-2" type="submit" value="Enregistrer les modifications">
 		<input class="btn btn-primary mb-2" type="submit" value="Supprimer le profil">
 </div>
 	</form>

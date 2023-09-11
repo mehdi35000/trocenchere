@@ -29,6 +29,7 @@ public class Utilisateur {
 	}
 
 
+	
 	public Utilisateur(int id_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe) {
 		super();

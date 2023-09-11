@@ -40,6 +40,16 @@ public class UtilisateurManager {
 	    return utilisateurEnCours;
 	}
 
+	//UPDATE DU PROFIL UTILISATEUR
+	public Utilisateur updateProfil(int id_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String code_postal, String ville, String mot_de_passe) {
+		
+			Utilisateur utilisateurMaj = new Utilisateur (id_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe);	
+			
+			DAOFactory.getUtilisateurDAO().updateProfil(utilisateurMaj);
+			
+			return utilisateurMaj;
+		} 
 	
 	//DELETE (pour supprimer profil)
 	public void delete(int id_utilisateur) {
