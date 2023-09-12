@@ -51,5 +51,10 @@ public class ArticleManager {
 		System.out.println("l'adresse de retrait est " + retraitAffiche);
 		return retraitAffiche;
 	}
+	
+	public List<Article> afficherMesArticlesEnVente(int id_utilisateur) {//throws BusinessException 
+		return DAOFactory.getArticleDAO().afficherMesArticlesEnVente(id_utilisateur);
+	
+	}
 
 }
