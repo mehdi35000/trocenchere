@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 import trocenchere.bll.ArticleManager;
 import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
+import trocenchere.bo.Retrait;
 
 
 public class ServletVendreUnArticle extends HttpServlet {
@@ -65,7 +66,20 @@ public class ServletVendreUnArticle extends HttpServlet {
 
 		String dateFin = request.getParameter("dateFin");
 		
+		String rue = request.getParameter("rue");
 		
+		String codePostal = request.getParameter("code_postal");
+		
+		String ville = request.getParameter("ville");
+		
+		Retrait retrait =  new Retrait ();
+		
+		retrait.setRue(rue);
+		retrait.setCodePostal(codePostal);
+		retrait.setVille(ville);
+		
+		
+
 		LocalDate dateDebutEnchere =LocalDate.now();
 		request.setAttribute("dateDebut", dateDebutEnchere);
 		
@@ -111,7 +125,7 @@ public class ServletVendreUnArticle extends HttpServlet {
 		try {  
 
 			
-			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c,utilisateurID  );
+			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c,utilisateurID,retrait  );
 
 			
 			RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");

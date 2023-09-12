@@ -10,7 +10,7 @@
 	<h1>ENI-Enchères</h1>
 	<h1>Nouvelle vente</h1>
 
-	<form action="" method="post">
+	<form action="ServletVendreUnArticle" method="post">
 		<ul>
 			<li><label for="article">Article :</label> <input type="text"
 				id="article" name="article" /></li>
@@ -39,9 +39,12 @@
 				type="date" value="${currentDate}" min="${currentDate}" /></li>
 		</ul>
 		<h2>Retrait</h2>
-		<p>Rue :</p>
-		<p>Code postal :</p>
-		<p>Ville :</p>
+		<p>Rue : <input type="text"
+				id="rue" name="rue" /></p>
+		<p>Code postal : <input type="text"
+				id="codePostal" name="code_postal" /></p>
+		<p>Ville :<input type="text"
+				id="ville" name="ville" /></p>
 		<a href="ServletAccueil"><input type="submit" value="Enregistrer" /></a>
 		<a href="ServletAccueil"><input type="reset" value="Annuler" /></a>
 	</form>

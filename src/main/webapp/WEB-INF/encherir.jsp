@@ -26,7 +26,10 @@
 	<br>
 	<p>Fin de l'enchère : ${article.date_fin_encheres}</p>
 	<br>
-	<p>Retrait :</p>
+	<p>Retrait : ${article.retrait.rue}</p>
+	<p> ${article.retrait.codePostal } </p>
+	<p> ${article.retrait.ville } </p>
+	<br>
 	<br>
 	<p>Vendeur :${article.utilisateur.pseudo} </p>
 	<br>

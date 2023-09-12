@@ -12,6 +12,7 @@ import java.util.List;
 
 import trocenchere.bo.Article;
 import trocenchere.bo.Categorie;
+import trocenchere.bo.Retrait;
 import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
 import trocenchere.dal.DAOFactory;
@@ -25,7 +26,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	private final static String SELECT_ARTICLES_BY_ID = "SELECT * FROM ARTICLES WHERE id_article = ?;";
 	
+	private final static String SELECT_RETRAIT_BY_ID_ARTICLE = "SELECT * FROM RETRAITS WHERE id_article = ?;";
 	
+	private final static String INSERT_RETRAIT = " INSERT INTO RETRAITS (id_article, rue, code_postal, ville) values(?,?,?,?);";
 	@Override
 	public List<Article> selectAllArticlesEnVente() {
 		List<Article> articlesEnVente = new ArrayList<>();
@@ -88,9 +91,23 @@ public class ArticleDAOImpl implements ArticleDAO {
 			
 			pstmt.setInt(7, utilisateurId);
 			pstmt.setInt(8, article.getCategorie().getId_categorie());
-
+		
 			pstmt.executeUpdate();
+			
+			// récupère les clés générées automatiquement (dans ce cas, l'ID de l'article nouvellement inséré) à partir de la base de données.
+			ResultSet rsCleGenere = pstmt.getGeneratedKeys();
+			if (rsCleGenere.next()) {
+			//permet de récupérer la valeur de la première colonne des clés générées automatiquement (dans ce cas, l'ID de l'article) et stocke cette valeur dans une variable.
+				rsCleGenere.getInt(1);
+					}
+			PreparedStatement pstmt1 = cnx.prepareStatement(INSERT_RETRAIT);
+			pstmt1.setInt(1, rsCleGenere.getInt(1));
+			pstmt1.setString(2, article.getRetrait().getRue());
+			pstmt1.setString(3, article.getRetrait().getCodePostal());
+			pstmt1.setString(4, article.getRetrait().getVille());
 
+			pstmt1.executeUpdate();
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -119,12 +136,46 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(id_categorie);
 				Utilisateur utilisteur = DAOFactory.getUtilisateurDAO().selectUtilisateurById(id_utilisateur);
-					
+				Retrait retrait= this.selectRetraitByIdArticle(id_Article);
 				article = new Article(id_Article1, nomArticle, description, dateDebutEncheres, dateFinEncheres, prix_initial, prix_vente, utilisteur, categorie);
+				article.setRetrait(retrait);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return article;
+	}
+	
+	
+	
+	public Retrait selectRetraitByIdArticle (int id_Article) {
+		
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		Retrait retrait = null;
+		
+		
+		try (Connection cnx = ConnectionProvider.getConnection()){
+			preparedStatement = cnx.prepareStatement(SELECT_RETRAIT_BY_ID_ARTICLE);
+			preparedStatement.setInt(1, id_Article);
+			
+			rs = preparedStatement.executeQuery();
+			
+			if(rs.next()) {
+				
+				retrait = new Retrait ();
+				
+				retrait.setId_Article(rs.getInt("id_article"));
+				retrait.setRue(rs.getString("rue"));
+				retrait.setCodePostal(rs.getString("code_postal"));
+				retrait.setVille(rs.getString("ville"));
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retrait;	
 	}
 }

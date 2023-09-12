@@ -18,6 +18,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 	// libelle FROM CATEGORIES ORDER BY no_categorie";
 	private static final String SELECT_CATEGORIE_BY_ID = "SELECT * FROM CATEGORIES WHERE id_categorie = ?;";
 
+
 	public List<Categorie> selectAllCategorie() {
 		List<Categorie> categories = new ArrayList<Categorie>();
 
