@@ -15,7 +15,7 @@ public interface UtilisateurDAO {
 			int id_utilisateur);
 
 	//pour mettre à jour le profil
-	void updateProfil(Utilisateur utilisateurMaj);
+	void  updateProfil(Utilisateur utilisateurMaj);
 
 
 }
