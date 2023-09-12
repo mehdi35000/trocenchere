@@ -25,7 +25,8 @@ public class UtilisateurManager {
 	public Utilisateur insert(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 		String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 	
-		Utilisateur nouvelUtilisateur = new Utilisateur (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);	
+		Utilisateur nouvelUtilisateur = new Utilisateur (pseudo, nom, prenom, email, telephone, rue, 
+														code_postal, ville, mot_de_passe, credit, administrateur);	
 		
 		//System.out.println(nouvelUtilisateur);
 		DAOFactory.getUtilisateurDAO().insert(nouvelUtilisateur);
@@ -39,10 +40,16 @@ public class UtilisateurManager {
 	    System.out.println("L'utilisateur actuel est " + utilisateurEnCours);
 	    return utilisateurEnCours;
 	}
-
+		
+	//UPDATE PROFIL
+	
+	public void updateProfil(Utilisateur utilisateurMaj) {
+		DAOFactory.getUtilisateurDAO().updateProfil(utilisateurMaj);
+	}
 	
 	//DELETE (pour supprimer profil)
 	public void delete(int id_utilisateur) {
 		DAOFactory.getUtilisateurDAO().delete(id_utilisateur);
 	}
+	
 }

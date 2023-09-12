@@ -94,7 +94,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		}
 	}
 	
-	//Méthode inutile car elle double la méthode connexionUtilisateur ??
 	@Override
 	public Utilisateur selectUtilisateurById(
 			int id_utilisateur) {
@@ -128,6 +127,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				//pour plus tard, si nécessaire ? 
 				utilisateurEnCours.setCredit(rs.getInt("credit"));
 	            utilisateurEnCours.setAdministrateur(rs.getBoolean("administrateur"));
+	            
 
 			}
 
@@ -137,5 +137,36 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		return utilisateurEnCours;
 	}
 		
+
+	private final static String MAJ_PROFIL = "UPDATE UTILISATEURS "
+			+ "SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?"
+			+ " WHERE id_utilisateur = ?;";
+	
+	@Override
+	public void updateProfil (Utilisateur utilisateurMaj){
+		System.out.println("updateProfil");
+		System.out.println(utilisateurMaj);
+			try (Connection cnx = ConnectionProvider.getConnection()) {
+
+				PreparedStatement pstmt = cnx.prepareStatement(MAJ_PROFIL);
+				pstmt.setString(1, utilisateurMaj.getPseudo());
+				pstmt.setString(2, utilisateurMaj.getNom());
+				pstmt.setString(3, utilisateurMaj.getPrenom());
+				pstmt.setString(4, utilisateurMaj.getEmail());
+				pstmt.setString(5, utilisateurMaj.getTelephone());
+				pstmt.setString(6, utilisateurMaj.getRue());
+				pstmt.setString(7, utilisateurMaj.getCode_postal());
+				pstmt.setString(8, utilisateurMaj.getVille());
+				pstmt.setInt(9, utilisateurMaj.getId_utilisateur());
+
+				pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//return utilisateurMaj;
+			System.out.println("fin updateProfil");
+	}
+			
 
 }
