@@ -250,7 +250,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	private final static String SELECT_MES_VENTES_A_VENIR = """
-			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=4 AND date_debut_encheres >GETDATE();
+			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_debut_encheres >GETDATE();
 			""";
 
 	@Override
@@ -310,7 +310,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	private final static String SELECT_MES_VENTES_TERMINEES = """
-			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=4 AND date_fin_encheres >GETDATE();
+			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_fin_encheres >GETDATE();
 			""";
 
 	@Override

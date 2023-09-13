@@ -67,7 +67,7 @@ public class ArticleManager {
 	}
 
 	public List<Article> recupererMesVentesTerminees(int id_utilisateur) {// throws BusinessException
-		return DAOFactory.getArticleDAO().recupererMesVentesAVenir(id_utilisateur);
+		return DAOFactory.getArticleDAO().recupererMesVentesTerminees(id_utilisateur);
 
 	}
 

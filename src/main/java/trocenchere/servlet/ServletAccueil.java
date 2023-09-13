@@ -31,26 +31,27 @@ public class ServletAccueil extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		session.setAttribute("pseudoUtilisateur", "Eva");
-		session.setAttribute("idUtilisateur", 4);
+		// session.setAttribute("pseudoUtilisateur", "Eva");
+		// session.setAttribute("idUtilisateur", 4);
 
-		session.setAttribute("utilisateur", DAOFactory.getUtilisateurDAO().selectUtilisateurById(4));
+		// session.setAttribute("utilisateur",
+		// DAOFactory.getUtilisateurDAO().selectUtilisateurById(4));
 
 		List<Article> listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
-		request.setAttribute("articlesEnVente", listeEncheres);
+		request.setAttribute("ListeEncheres", listeEncheres);
+		System.out.println("Je suis dans le doGet de ma ServletAccueil");
 
+		// pour éviter erreur null pointer Exception
 		/*
-		 * // pour éviter erreur null pointer Exception Integer id_utilisateur =
-		 * (Integer) request.getSession().getAttribute("idUtilisateur");
-		 * System.out.println("vous allez afficher les ventes de " + id_utilisateur); if
-		 * (id_utilisateur != null) { id_utilisateur = (int)
-		 * request.getSession().getAttribute("idUtilisateur");
-		 * 
-		 * List<Article> listeEncheres =
-		 * ArticleManager.getInstance().recupererMesArticlesEnVente(id_utilisateur);
-		 * request.setAttribute("mesArticlesEnVente", listeEncheres);
-		 * System.out.println("je suis dans le doGet de ma ServletAccueil"); }
-		 */
+		Integer id_utilisateur = (Integer) request.getSession().getAttribute("idUtilisateur");
+		System.out.println("vous allez afficher les ventes de " + id_utilisateur);
+		if (id_utilisateur != null) {
+			id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
+			List<Article> listeEncheres = ArticleManager.getInstance().recupererMesArticlesEnVente(id_utilisateur);
+			request.setAttribute("mesArticlesEnVente", listeEncheres);
+			System.out.println("je suis dans le doGet de ma ServletAccueil");
+		}
+		*/
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -69,6 +70,7 @@ public class ServletAccueil extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Je suis dans le doGet de ma ServletAccueil");
 
 		List<Article> listeEncheres = null;
 
@@ -85,12 +87,12 @@ public class ServletAccueil extends HttpServlet {
 			if (request.getParameter("mesEnchères") != null) {
 				System.out.println("mesEnchères");
 				// TODO : Charger la liste des articles sur lesquels j'ai enchéri
-				//listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
+				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 			}
 			if (request.getParameter("mesEnchèresRemportées") != null) {
 				System.out.println("mesEnchèresRemportées");
 				// TODO : Charger la liste des articles que j'ai gagné
-				//listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
+				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 			}
 		} else {
 			System.out.println("ventes");
@@ -116,7 +118,7 @@ public class ServletAccueil extends HttpServlet {
 			}
 		}
 
-		request.setAttribute("ListeDesEncheres", listeEncheres);
+		request.setAttribute("ListeEncheres", listeEncheres);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
