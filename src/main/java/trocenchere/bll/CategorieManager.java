@@ -27,7 +27,7 @@ public class CategorieManager {
 	
 	public Categorie selectCategorieById(int id_categorie) {
 		Categorie categorieAffiche = DAOFactory.getCategorieDAO().selectCategorieById(id_categorie);
-		System.out.println("La categorie de l'article affiché est " + categorieAffiche);
+		//System.out.println("La categorie de l'article affiché est " + categorieAffiche);
 		return categorieAffiche;
 	}
 }

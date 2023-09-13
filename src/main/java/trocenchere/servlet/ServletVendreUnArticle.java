@@ -47,9 +47,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
-		//request.setAttribute("articlesEnVente", articlesEnVente);
-		
 		String article = request.getParameter("article");
 		System.out.println(article);
 		
@@ -128,8 +125,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 			ArticleManager.getInstance().insert(article, description, dateDebutEnchere,dateFinEnchere, mise_a_prix,c,utilisateurID,retrait  );
 
 			response.sendRedirect("ServletAccueil"); 
-			//RequestDispatcher rd = request.getRequestDispatcher("/ServletAccueil");
-			//rd.forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

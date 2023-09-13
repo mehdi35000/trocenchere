@@ -46,13 +46,13 @@ public class ServletAccueil extends HttpServlet {
 		rd.forward(request, response);
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			System.out.println("Message connection ok");
+			//System.out.println("Message connection ok");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		List<Categorie> categorie = CategorieManager.getInstance().selectAllCategorie();
-		System.out.println(categorie.toString());
+		//System.out.println(categorie.toString());
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -62,20 +62,36 @@ public class ServletAccueil extends HttpServlet {
 		String toggleOption = request.getParameter("toggle");
 
 		if ("achats".equals(toggleOption)) {
-			// Chargez la liste des articles en vente (${articlesEnVente})
+			 if (request.getParameter("enchères") != null) {
 			List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
 			request.setAttribute("articlesEnVente", articlesEnVente);
+			 }
+			 if (request.getParameter("mesEnchères") != null) {
+					// Charger la liste des articles sur lesquels j'ai enchéri
+					 }
+			 if (request.getParameter("mesEnchèresRemportées") != null) {
+					// Charger la liste des articles que j'ai gagné
+					 }
 		} else if ("ventes".equals(toggleOption)) {
-			// Chargez la liste de vos articles en vente (${mesArticlesEnVente})
+			if (request.getParameter("mesVentesEnCours") != null) {
 			int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 			List<Article> mesArticlesEnVente = ArticleManager.getInstance().afficherMesArticlesEnVente(id_utilisateur);
-			request.setAttribute("mesArticlesEnVente", mesArticlesEnVente);
-			System.out.println("L'utilisateur actuel est " + id_utilisateur + "il veut afficher ses ventes en ligne");
+			request.setAttribute("mesArticlesEnCours", mesArticlesEnVente);
 		}
+			if (request.getParameter("mesVentesAVenir") != null) {
+				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
+				List<Article> mesVentesAVenir = ArticleManager.getInstance().afficherMesArticlesEnVente(id_utilisateur);
+				request.setAttribute("mesVentesAVenir", mesVentesAVenir);
+			}
+			if (request.getParameter("mesVentesTerminees") != null) {
+				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
+				List<Article> mesVentesTerminees = ArticleManager.getInstance().afficherMesArticlesEnVente(id_utilisateur);
+				request.setAttribute("mesVentesTermines", mesVentesTerminees);
+			}		
 
-		// Redirigez vers votre JSP d'accueil
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
+		}
 
 	}
 

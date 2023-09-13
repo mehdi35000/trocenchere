@@ -41,19 +41,29 @@ public class ArticleManager {
 	
 	public Article selectArticlesById (int id_Article) {
 		Article articleAffiche = DAOFactory.getArticleDAO().selectArticlesById(id_Article);
-		System.out.println("l'article affiche est " +articleAffiche);
+		//System.out.println("l'article affiche est " +articleAffiche);
 		return articleAffiche;
 		
 	}
 	
 	public Retrait selectRetraitByIdArticle (int id_Article) {
 		Retrait retraitAffiche = DAOFactory.getArticleDAO().selectRetraitByIdArticle(id_Article);
-		System.out.println("l'adresse de retrait est " + retraitAffiche);
+		//System.out.println("l'adresse de retrait est " + retraitAffiche);
 		return retraitAffiche;
 	}
 	
 	public List<Article> afficherMesArticlesEnVente(int id_utilisateur) {//throws BusinessException 
 		return DAOFactory.getArticleDAO().afficherMesArticlesEnVente(id_utilisateur);
+	
+	}
+	
+	public List<Article> afficherMesVentesAVenir(int id_utilisateur) {//throws BusinessException 
+		return DAOFactory.getArticleDAO().afficherMesVentesAVenir(id_utilisateur);
+	
+	}
+	
+	public List<Article> afficherMesVentesTerminees(int id_utilisateur) {//throws BusinessException 
+		return DAOFactory.getArticleDAO().afficherMesVentesAVenir(id_utilisateur);
 	
 	}
 
