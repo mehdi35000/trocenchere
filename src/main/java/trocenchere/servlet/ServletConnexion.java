@@ -46,11 +46,15 @@ public class ServletConnexion extends HttpServlet {
 	    	session.setAttribute("pseudoUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("idUtilisateur", utilisateur.getId_utilisateur());
 	    	
-	    	RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
-			rd.forward(request, response);
+	    	//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+	    	//RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
+	    	response.sendRedirect("ServletAccueil"); 
+			//rd.forward(request, response);
+			System.out.println("doPost ServletConnexion : on a récupéré les infos de session, j'arrive dans la ServletAccueil");
 			
 	    } else {
 	    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
+	    	System.out.println("doPost ServletConnexion : pas d'infos de session récupérées, on reste sur la jsp connexion.jsp");
 			rd.forward(request, response);
 
 	    }

@@ -31,6 +31,7 @@ public class ServletAccueil extends HttpServlet {
 		request.setAttribute("articlesEnVente", articlesEnVente);
 
 		// pour éviter erreur null pointer Exception
+		
 		Integer id_utilisateur = (Integer) request.getSession().getAttribute("idUtilisateur");
 		System.out.println("vous allez afficher les ventes de " + id_utilisateur);
 		if (id_utilisateur != null) {
@@ -39,6 +40,7 @@ public class ServletAccueil extends HttpServlet {
 			List<Article> mesArticlesEnVente = ArticleManager.getInstance().afficherMesArticlesEnVente(id_utilisateur);
 			request.setAttribute("mesArticlesEnVente", mesArticlesEnVente);
 		}
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -68,6 +70,7 @@ public class ServletAccueil extends HttpServlet {
 			int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 			List<Article> mesArticlesEnVente = ArticleManager.getInstance().afficherMesArticlesEnVente(id_utilisateur);
 			request.setAttribute("mesArticlesEnVente", mesArticlesEnVente);
+			System.out.println("L'utilisateur actuel est " + id_utilisateur + "il veut afficher ses ventes en ligne");
 		}
 
 		// Redirigez vers votre JSP d'accueil

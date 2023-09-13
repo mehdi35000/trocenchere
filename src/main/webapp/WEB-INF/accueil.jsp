@@ -42,7 +42,7 @@
 	<h3>Liste des enchères</h3>
 
 	<div id="ListeDesEncheres">
-		<c:forEach items="${articlesEnVente}" var="article" begin="0">
+		<c:forEach items="${articlesEnVente}" var="article">
 			<div class="article">
 				<h2>
 					<a href="ServletEncherir?id_Article=${article.id_Article}"
@@ -59,13 +59,12 @@
 
 	<div id="ListeDeMesVentes">
 	<h3>Mes articles en vente</h3>
-	<c:forEach items="${mesArticlesEnVente}" var="article" begin="0">
+	<c:forEach items="${mesArticlesEnVente}" var="article">
 		<div class="article">
 			<h2>
 				<a href="ServletEncherir?id_Article=${article.id_Article}"
 					data-id="${article.id_Article}">${article.nom_article}</a>
 			</h2>
-			<%--  <h2> <a href ="ServletEncherir"> ${article.nom_article}</a></h2> --%>
 			<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
 			<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
 			<p>Prix initial : ${article.mise_a_prix}</p>
