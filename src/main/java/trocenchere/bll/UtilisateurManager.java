@@ -37,7 +37,6 @@ public class UtilisateurManager {
 	//SELECT (pour récupérer les données d'un utilisateur en fonction de son id)
 	public Utilisateur selectUtilisateurById(int id_utilisateur) {
 	    Utilisateur utilisateurEnCours = DAOFactory.getUtilisateurDAO().selectUtilisateurById(id_utilisateur);
-	    System.out.println("L'utilisateur actuel est " + utilisateurEnCours);
 	    return utilisateurEnCours;
 	}
 		

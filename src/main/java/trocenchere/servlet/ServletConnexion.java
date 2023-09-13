@@ -44,6 +44,8 @@ public class ServletConnexion extends HttpServlet {
 	        
 	    	session.setAttribute("pseudoUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("idUtilisateur", utilisateur.getId_utilisateur());
+
+	    	session.setAttribute("utilisateur", utilisateur);
 	    	
 	    	response.sendRedirect("ServletAccueil"); 
 			System.out.println("doPost ServletConnexion : on a récupéré les infos de session, j'arrive dans la ServletAccueil");

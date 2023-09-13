@@ -47,6 +47,7 @@ public class ServletVendreUnArticle extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		String article = request.getParameter("article");
 		System.out.println(article);
 		

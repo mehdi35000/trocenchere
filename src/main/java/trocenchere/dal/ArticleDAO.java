@@ -1,6 +1,5 @@
 package trocenchere.dal;
 
-
 import trocenchere.bo.Article;
 import trocenchere.bo.Retrait;
 
@@ -9,16 +8,16 @@ import java.util.List;
 public interface ArticleDAO {
 
 	List<Article> selectAllArticlesEnVente();
-	
-	void insert(Article article,int utilisateurId); //throws BusinessException
-	
-	public Article selectArticlesById (int id_Article) ;
-	
-	public Retrait selectRetraitByIdArticle (int id_Article);
 
-	public List<Article> afficherMesArticlesEnVente(int id_utilisateur);
+	void insert(Article article, int utilisateurId); // throws BusinessException
 
-	public List<Article> afficherMesVentesAVenir(int id_utilisateur);
+	public Article selectArticlesById(int id_Article);
 
-	public List<Article> afficherMesVentesTerminees(int id_utilisateur);
+	public Retrait selectRetraitByIdArticle(int id_Article);
+
+	public List<Article> recupererMesArticlesEnVente(int id_utilisateur);
+
+	public List<Article> recupererMesVentesAVenir(int id_utilisateur);
+
+	public List<Article> recupererMesVentesTerminees(int id_utilisateur);
 }
