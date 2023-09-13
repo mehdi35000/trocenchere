@@ -33,7 +33,15 @@
 	<br>
 	<p>Vendeur :${article.utilisateur.pseudo} </p>
 	<br>
-	<p> Ma proposition<input type="number" id="enchere" name="enchere" min="1" max="100000" /></p>
-	<a href=""><input type="button" value="Enchérir" /></a>
+	
+	<form action="ServletEncherir" method="POST">
+	
+	<label for="enchere"> ma proposition :</label>
+	<input type="hidden" id="id_Article" name="id_Article" value="${article.id_Article }">
+	
+	<input type="number" id="enchere" name="enchere" min="1" max="100000">
+	<br>
+	<input type="submit" value="Encherir">
+	</form>	
 </body>
 </html>

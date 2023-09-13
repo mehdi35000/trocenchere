@@ -47,8 +47,6 @@ public class ServletVendreUnArticle extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//List<Article> articlesEnVente = ArticleManager.getInstance().selectAllArticlesEnVente();
-		//request.setAttribute("articlesEnVente", articlesEnVente);
 		
 		String article = request.getParameter("article");
 		System.out.println(article);

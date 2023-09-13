@@ -41,14 +41,12 @@ public class ArticleManager {
 	
 	public Article selectArticlesById (int id_Article) {
 		Article articleAffiche = DAOFactory.getArticleDAO().selectArticlesById(id_Article);
-		System.out.println("l'article affiche est " +articleAffiche);
 		return articleAffiche;
 		
 	}
 	
 	public Retrait selectRetraitByIdArticle (int id_Article) {
 		Retrait retraitAffiche = DAOFactory.getArticleDAO().selectRetraitByIdArticle(id_Article);
-		System.out.println("l'adresse de retrait est " + retraitAffiche);
 		return retraitAffiche;
 	}
 

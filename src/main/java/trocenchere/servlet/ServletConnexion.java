@@ -45,6 +45,8 @@ public class ServletConnexion extends HttpServlet {
 			//session.setAttribute("idUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("pseudoUtilisateur", utilisateur.getPseudo());
 	    	session.setAttribute("idUtilisateur", utilisateur.getId_utilisateur());
+
+	    	session.setAttribute("utilisateur", utilisateur);
 	    	
 	    	RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
 			rd.forward(request, response);

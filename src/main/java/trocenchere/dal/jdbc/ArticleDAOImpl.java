@@ -15,10 +15,14 @@ import trocenchere.bo.Categorie;
 import trocenchere.bo.Retrait;
 import trocenchere.bo.Utilisateur;
 import trocenchere.dal.ArticleDAO;
+import trocenchere.dal.CategorieDAO;
 import trocenchere.dal.DAOFactory;
+import trocenchere.dal.EnchereDAO;
+import trocenchere.dal.UtilisateurDAO;
 
 public class ArticleDAOImpl implements ArticleDAO {
-	private final static String INSERT_ARTICLE = "INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente, id_utilisateur, id_categorie)VALUES (?,?,?,?,?,?,?,?);";
+	private final static String INSERT_ARTICLE = "INSERT INTO ARTICLES (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,"
+													+ "	id_utilisateur, id_categorie)VALUES (?,?,?,?,?,?,?,?);";
 
 	private final static String SELECT_ALL_ARTICLES_A_VENDRE = """
 			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur;
@@ -65,6 +69,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 				article.setUtilisateur(vendeur);
 
+				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("id_categorie"));
+				article.setCategorie(categorie);
+				
 				articlesEnVente.add(article);
 			}
 		} catch (SQLException e) {
