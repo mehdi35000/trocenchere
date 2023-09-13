@@ -49,5 +49,10 @@ public class ArticleManager {
 		Retrait retraitAffiche = DAOFactory.getArticleDAO().selectRetraitByIdArticle(id_Article);
 		return retraitAffiche;
 	}
+	
+	public List<Article> afficherMesArticlesEnVente(int id_utilisateur) {//throws BusinessException 
+		return DAOFactory.getArticleDAO().afficherMesArticlesEnVente(id_utilisateur);
+	
+	}
 
 }

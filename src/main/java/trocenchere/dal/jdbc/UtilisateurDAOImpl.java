@@ -144,8 +144,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	@Override
 	public void updateProfil (Utilisateur utilisateurMaj){
-		System.out.println("updateProfil");
-		System.out.println(utilisateurMaj);
+		//System.out.println("updateProfil");
+		//System.out.println(utilisateurMaj);
 			try (Connection cnx = ConnectionProvider.getConnection()) {
 
 				PreparedStatement pstmt = cnx.prepareStatement(MAJ_PROFIL);
@@ -165,7 +165,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				e.printStackTrace();
 			}
 			//return utilisateurMaj;
-			System.out.println("fin updateProfil");
+			//System.out.println("fin updateProfil");
 	}
 			
 

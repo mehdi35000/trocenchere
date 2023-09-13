@@ -15,21 +15,6 @@ import java.io.IOException;
 public class ServletMonProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/*
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getSession();
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/monprofil.jsp");
-		rd.forward(request, response);
-		
-		String username = (String) request.getSession().getAttribute("pseudoUtilisateur");
-		request.setAttribute("pseudoUtilisateur", username);
-		
-		Utilisateur utilisateurEnCours = UtilisateurManager.getInstance().selectUtilisateurById();
-		
-	}
-	*/
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    Integer idUtilisateurInteger = (Integer) request.getSession().getAttribute("idUtilisateur"); //récupérer l'id de l'utilisateur depuis la session

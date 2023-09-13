@@ -15,4 +15,6 @@ public interface ArticleDAO {
 	public Article selectArticlesById (int id_Article) ;
 	
 	public Retrait selectRetraitByIdArticle (int id_Article);
+
+	public List<Article> afficherMesArticlesEnVente(int id_utilisateur);
 }

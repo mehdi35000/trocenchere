@@ -185,4 +185,63 @@ public class ArticleDAOImpl implements ArticleDAO {
 		}
 		return retrait;	
 	}
-}
+	
+	private final static String SELECT_ALL_ARTICLES_BY_ID_UTILISATEUR = """
+	SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=?;
+	""";
+	
+	@Override
+	public List<Article> afficherMesArticlesEnVente(int id_utilisateur) {
+		List<Article> mesArticlesEnVente = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		
+		//Utilisateur utilisateurEnCours = null;
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			pstmt = cnx.prepareStatement(SELECT_ALL_ARTICLES_BY_ID_UTILISATEUR);
+			
+			pstmt.setInt(1, id_utilisateur);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs != null) {
+			while (rs.next()) {
+				// permet créer une nouvelle instance d'Article pour chaque enregistrement de la
+				// base de données
+				// afin de les mettre dans une liste articlesEnVente
+				Article article = new Article();
+				article.setId_Article(rs.getInt("id_article"));
+				article.setNom_article(rs.getString("nom_article"));
+				article.setDate_debut_encheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setMise_a_prix(rs.getInt("prix_initial"));
+				article.setPrix_vente(rs.getInt("prix_vente"));
+
+				Utilisateur vendeur = new Utilisateur();
+				vendeur.setId_utilisateur(rs.getInt("id_utilisateur"));
+				vendeur.setPseudo(rs.getString("pseudo"));
+				vendeur.setNom(rs.getString("nom"));
+				vendeur.setPrenom(rs.getString("prenom"));
+				vendeur.setEmail(rs.getString("email"));
+				vendeur.setTelephone(rs.getString("telephone"));
+				vendeur.setRue(rs.getString("rue"));
+				vendeur.setCode_postal(rs.getString("code_postal"));
+				vendeur.setVille(rs.getString("ville"));
+				vendeur.setMot_de_passe(rs.getString("mot_de_passe"));
+				vendeur.setCredit(rs.getInt("credit"));
+				vendeur.setAdministrateur(rs.getBoolean("administrateur"));
+
+				article.setUtilisateur(vendeur);
+
+				mesArticlesEnVente.add(article);
+			}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return mesArticlesEnVente;
+
+	}
+	
+			
+}//fin public 
