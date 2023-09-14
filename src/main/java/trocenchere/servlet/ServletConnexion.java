@@ -48,11 +48,9 @@ public class ServletConnexion extends HttpServlet {
 	    	session.setAttribute("utilisateur", utilisateur);
 	    	
 	    	response.sendRedirect("ServletAccueil"); 
-			System.out.println("doPost ServletConnexion : on a récupéré les infos de session, j'arrive dans la ServletAccueil");
 			
 	    } else {
 	    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
-	    	System.out.println("doPost ServletConnexion : pas d'infos de session récupérées, on reste sur la jsp connexion.jsp");
 			rd.forward(request, response);
 
 	    }

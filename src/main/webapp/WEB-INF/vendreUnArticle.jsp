@@ -16,6 +16,7 @@
 <main class="container" style="display: flex; justify-content: center; align-items: center">
 		<article class="grid">
 
+		<form action="ServletVendreUnArticle" method="POST">
 	<h2>Nouvelle vente</h2>
 	
 

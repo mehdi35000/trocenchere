@@ -31,15 +31,8 @@ public class ServletAccueil extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		// session.setAttribute("pseudoUtilisateur", "Eva");
-		// session.setAttribute("idUtilisateur", 4);
-
-		// session.setAttribute("utilisateur",
-		// DAOFactory.getUtilisateurDAO().selectUtilisateurById(4));
-
 		List<Article> listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 		request.setAttribute("ListeEncheres", listeEncheres);
-		System.out.println("Je suis dans le doGet de ma ServletAccueil");
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -52,58 +45,42 @@ public class ServletAccueil extends HttpServlet {
 
 		List<Categorie> categorie = CategorieManager.getInstance().selectAllCategorie();
 
-		// System.out.println(categorie.toString());
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Je suis dans le doGet de ma ServletAccueil");
 
 		List<Article> listeEncheres = null;
 
 		String toggleOption = request.getParameter("toggleOption");
-		System.out.println("ma toggleOption " + toggleOption);
 
 		if ("encheres".equals(toggleOption)) {
-				System.out.println("enchères");
 				listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
-				System.out.println(listeEncheres);
 			}
 		if ("mesEnchères".equals(toggleOption)) {
-				System.out.println("mesEnchères");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesEncheres(id_utilisateur);
-				System.out.println(listeEncheres);
 			}
 		if ("mesEnchèresRemportées".equals(toggleOption)) {
-			//if (request.getParameter("mesEnchèresRemportées") != null) {
-				System.out.println("mesEnchèresRemportées");
 				// TODO : Charger la liste des articles que j'ai gagné
-				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
+				// listeEncheres = ArticleManager.getInstance().selectAllMesArticlesAchetes();
 			}
 
 		if ("mesVentesEnCours".equals(toggleOption)) {
-				System.out.println("mesVentesEnCours");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesArticlesEnVente(id_utilisateur);
-				System.out.println(listeEncheres);
 
 			}
 		
 		if ("mesVentesAVenir".equals(toggleOption)) {
-				System.out.println("mesVentesAVenir");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesVentesAVenir(id_utilisateur);
-				System.out.println(listeEncheres);
 			}
 
 		if ("mesVentesTerminees".equals(toggleOption)) {
-				System.out.println("mesVentesTerminees");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesVentesTerminees(id_utilisateur);
-				System.out.println(listeEncheres);
 			}
 
 		request.setAttribute("ListeEncheres", listeEncheres);

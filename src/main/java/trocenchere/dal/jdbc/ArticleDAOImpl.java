@@ -48,7 +48,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 	
 	@Override
 	public List<Article> selectAllArticlesEnVente() {
-		// List<Article> articlesEnVente = new ArrayList<>();
 		List<Article> listeEncheres = new ArrayList<>();
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
@@ -86,14 +85,12 @@ public class ArticleDAOImpl implements ArticleDAO {
 				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("id_categorie"));
 				article.setCategorie(categorie);
 
-				// articlesEnVente.add(article);
 				listeEncheres.add(article);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		// return articlesEnVente;
 		return listeEncheres;
 
 	}
@@ -204,11 +201,8 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	@Override
 	public List<Article> recupererMesArticlesEnVente(int id_utilisateur) {
-		// List<Article> mesArticlesEnVente = new ArrayList<>();
 		List<Article> listeEncheres = new ArrayList<>();
 		PreparedStatement pstmt = null;
-
-		// Utilisateur utilisateurEnCours = null;
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			pstmt = cnx.prepareStatement(SELECT_ALL_ARTICLES_BY_ID_UTILISATEUR);
@@ -252,19 +246,15 @@ public class ArticleDAOImpl implements ArticleDAO {
 			e.printStackTrace();
 		}
 
-		// return mesArticlesEnVente;
 		return listeEncheres;
 
 	}
 
 	@Override
 	public List<Article> recupererMesVentesAVenir(int id_utilisateur) {
-		// List<Article> mesVentesAVenir = new ArrayList<>();
 		List<Article> listeEncheres = new ArrayList<>();
 
 		PreparedStatement pstmt = null;
-
-		// Utilisateur utilisateurEnCours = null;
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			pstmt = cnx.prepareStatement(SELECT_MES_VENTES_A_VENIR);
@@ -300,7 +290,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 					article.setUtilisateur(vendeur);
 
-					// mesVentesAVenir.add(article);
 					listeEncheres.add(article);
 				}
 			}
@@ -308,19 +297,15 @@ public class ArticleDAOImpl implements ArticleDAO {
 			e.printStackTrace();
 		}
 
-		// return mesVentesAVenir;
 		return listeEncheres;
 
 	}
 
 	@Override
 	public List<Article> recupererMesVentesTerminees(int id_utilisateur) {
-		// List<Article> mesVentesTerminees = new ArrayList<>();
 		List<Article> listeEncheres = new ArrayList<>();
 
 		PreparedStatement pstmt = null;
-
-		// Utilisateur utilisateurEnCours = null;
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			pstmt = cnx.prepareStatement(SELECT_MES_VENTES_TERMINEES);
@@ -356,7 +341,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 					article.setUtilisateur(vendeur);
 
-					// mesVentesTerminees.add(article);
 					listeEncheres.add(article);
 				}
 			}
@@ -364,7 +348,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 			e.printStackTrace();
 		}
 
-		// return mesVentesTerminees;
 		return listeEncheres;
 
 	}
@@ -385,7 +368,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 				ResultSet rs = pstmt.executeQuery();
 				if (rs != null) {
 					while (rs.next()) {
-						//JE CHERCHE A AFFICHER L'ARTICLE, MAIS POUR LE MOMENT JE N'AI QUE SON ID
 						Article article = new Article();
 						article.setId_Article(rs.getInt("id_article"));
 						article.setNom_article(rs.getString("nom_article"));
@@ -410,4 +392,4 @@ public class ArticleDAOImpl implements ArticleDAO {
 	 
 	 
 	 
-}// fin public
+}
