@@ -76,22 +76,27 @@ public class ServletAccueil extends HttpServlet {
 
 		List<Article> listeEncheres = null;
 
-		String toggleForm = request.getParameter("toggle");
+		//String typeRecherche = request.getParameter("typeRecherche");
+		String toggleOption = request.getParameter("toggleOption");
+		System.out.println("ma toggleOption " + toggleOption);
 
 		//if ("achats".equals(toggleOption)) {
 			//System.out.println("achats");
 
-			if (request.getParameter("enchères") != null) {
+			//if (request.getParameter("enchères") != null) {
+		if ("encheres".equals(toggleOption)) {
 				System.out.println("enchères");
 				listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 				System.out.println(listeEncheres);
 			}
-			if (request.getParameter("mesEnchères") != null) {
+		if ("mesEnchères".equals(toggleOption)) {
+			//if (request.getParameter("mesEnchères") != null) {
 				System.out.println("mesEnchères");
 				// TODO : Charger la liste des articles sur lesquels j'ai enchéri
 				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 			}
-			if (request.getParameter("mesEnchèresRemportées") != null) {
+		if ("mesEnchèresRemportées".equals(toggleOption)) {
+			//if (request.getParameter("mesEnchèresRemportées") != null) {
 				System.out.println("mesEnchèresRemportées");
 				// TODO : Charger la liste des articles que j'ai gagné
 				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
@@ -99,20 +104,23 @@ public class ServletAccueil extends HttpServlet {
 		//} else {
 			//System.out.println("ventes");
 
-			if (request.getParameter("mesVentesEnCours") != null) {
+			//if (request.getParameter("mesVentesEnCours") != null) {
+		if ("mesVentesEnCours".equals(toggleOption)) {
 				System.out.println("mesVentesEnCours");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesArticlesEnVente(id_utilisateur);
 				System.out.println(listeEncheres);
 
 			}
-			if (request.getParameter("mesVentesAVenir") != null) {
+			//if (request.getParameter("mesVentesAVenir") != null) {
+		if ("mesVentesAVenir".equals(toggleOption)) {
 				System.out.println("mesVentesAVenir");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesVentesAVenir(id_utilisateur);
 				System.out.println(listeEncheres);
 			}
-			if (request.getParameter("mesVentesTerminees") != null) {
+			//if (request.getParameter("mesVentesTerminees") != null) {
+		if ("mesVentesTerminees".equals(toggleOption)) {
 				System.out.println("mesVentesTerminees");
 				int id_utilisateur = (int) request.getSession().getAttribute("idUtilisateur");
 				listeEncheres = ArticleManager.getInstance().recupererMesVentesTerminees(id_utilisateur);

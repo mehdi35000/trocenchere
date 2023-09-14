@@ -67,7 +67,29 @@
 				<!--  <input type="radio" name="toggle" value="achats" checked>Achats-->
 				<!--  <input type="radio" name="toggle" value="ventes">Mes Ventes-->	
 				
-				<form id="toggleForm" action="ServletAccueil" method="post">
+				<form id="toggleOption" action="ServletAccueil" method="post">
+				
+				<!--  <div id="achatsFilters">-->
+								<input type="radio" name="toggleOption" value="encheres" id="enchèresCheckbox">
+								<label for="enchèresCheckbox">Enchères</label>
+								<input type="radio" name="toggleOption" value="mesEnchères" id="mesEnchèresCheckbox">
+								<label for="mesEnchèresCheckbox">Mes enchères</label> 
+								<input type="radio" name="toggleOption" value="mesEnchèresRemportées"	id="mesEnchèresRemportéesCheckbox"> 
+								<label for="mesEnchèresRemportéesCheckbox">Mes enchères emportées</label>
+								
+								<!--  <input type="submit" value="Afficher">-->
+				<!-- <div id="ventesFilters">-->
+								<input type="radio" name="toggleOption" value="mesVentesEnCours" id="mesVentesEnCoursCheckbox">
+								<label for="mesVentesEnCoursCheckbox">Mes ventes en cours</label> 
+								<input type="radio" name="toggleOption" value="mesVentesAVenir" id="mesVentesAVenirCheckbox">
+								<label for="mesVentesAVenirCheckbox">Mes ventes programmées</label> 
+								<input type="radio" name="toggleOption" value="mesVentesTerminees"	id="mesVentesTermineesCheckbox"> 
+								<label for="mesVentesTermineesCheckbox">Mes ventes terminées</label>
+								
+								<input type="submit" value="Filtrer">
+			</form>
+			<%-- 
+			<form id="toggleForm" action="ServletAccueil" method="post">
 				
 				<!--  <div id="achatsFilters">-->
 								<input type="checkbox" name="enchères" id="enchèresCheckbox">
@@ -88,6 +110,7 @@
 								
 								<input type="submit" value="Filtrer">
 			</form>
+			--%>
 			<br> <br>
 		</article>
 		</c:if>
