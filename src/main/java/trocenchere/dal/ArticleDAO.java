@@ -20,4 +20,6 @@ public interface ArticleDAO {
 	public List<Article> recupererMesVentesAVenir(int id_utilisateur);
 
 	public List<Article> recupererMesVentesTerminees(int id_utilisateur);
+
+	public List<Article> recupererMesEncheres(int id_utilisateur);
 }

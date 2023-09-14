@@ -60,7 +60,8 @@ public class ServletEncherir extends HttpServlet {
 		// insérer la nouvelle enchère dans la base de données
 		EnchereManager.getInstance().insert(date_enchere, montant_Enchere, utilisateurEncherisseur, articleEnCours);
 
-		RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
-		rd.forward(request, response);
+		//RequestDispatcher rd = request.getRequestDispatcher("ServletAccueil");
+		//rd.forward(request, response);
+		response.sendRedirect("ServletAccueil"); 
 	}
 }

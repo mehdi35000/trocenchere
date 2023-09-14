@@ -33,7 +33,19 @@ public class ArticleDAOImpl implements ArticleDAO {
 	private final static String SELECT_RETRAIT_BY_ID_ARTICLE = "SELECT * FROM RETRAITS WHERE id_article = ?;";
 
 	private final static String INSERT_RETRAIT = " INSERT INTO RETRAITS (id_article, rue, code_postal, ville) values(?,?,?,?);";
-
+	
+	private final static String SELECT_ALL_ARTICLES_BY_ID_UTILISATEUR = """
+			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_debut_encheres <GETDATE() AND date_fin_encheres>GETDATE();
+			""";
+	
+	private final static String SELECT_MES_VENTES_TERMINEES = """
+			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_fin_encheres <GETDATE();
+			""";
+	
+	private final static String SELECT_MES_VENTES_A_VENIR = """
+			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_debut_encheres >GETDATE();
+			""";
+	
 	@Override
 	public List<Article> selectAllArticlesEnVente() {
 		// List<Article> articlesEnVente = new ArrayList<>();
@@ -190,10 +202,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 		return retrait;
 	}
 
-	private final static String SELECT_ALL_ARTICLES_BY_ID_UTILISATEUR = """
-			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_debut_encheres <GETDATE() AND date_fin_encheres>GETDATE();
-			""";
-
 	@Override
 	public List<Article> recupererMesArticlesEnVente(int id_utilisateur) {
 		// List<Article> mesArticlesEnVente = new ArrayList<>();
@@ -248,10 +256,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 		return listeEncheres;
 
 	}
-
-	private final static String SELECT_MES_VENTES_A_VENIR = """
-			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_debut_encheres >GETDATE();
-			""";
 
 	@Override
 	public List<Article> recupererMesVentesAVenir(int id_utilisateur) {
@@ -309,10 +313,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	}
 
-	private final static String SELECT_MES_VENTES_TERMINEES = """
-			SELECT * FROM UTILISATEURS RIGHT JOIN ARTICLES ON utilisateurs.id_utilisateur=articles.id_utilisateur WHERE articles.id_utilisateur=? AND date_fin_encheres <GETDATE();
-			""";
-
 	@Override
 	public List<Article> recupererMesVentesTerminees(int id_utilisateur) {
 		// List<Article> mesVentesTerminees = new ArrayList<>();
@@ -369,4 +369,45 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	}
 
+	 private final static String SELECT_MES_ENCHERES = """
+		 		SELECT distinct (a.id_article), nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente FROM ENCHERES as e LEFT JOIN ARTICLES as a ON a.id_article=e.id_article WHERE e.id_utilisateur=?;
+				 """;
+	 
+	 @Override
+	 public List<Article> recupererMesEncheres(int id_utilisateur) {
+			List<Article> listeEncheres = new ArrayList<>();
+
+			PreparedStatement pstmt = null;
+			try (Connection cnx = ConnectionProvider.getConnection()) {
+				pstmt = cnx.prepareStatement(SELECT_MES_ENCHERES);
+
+				pstmt.setInt(1, id_utilisateur);
+				ResultSet rs = pstmt.executeQuery();
+				if (rs != null) {
+					while (rs.next()) {
+						//JE CHERCHE A AFFICHER L'ARTICLE, MAIS POUR LE MOMENT JE N'AI QUE SON ID
+						Article article = new Article();
+						article.setId_Article(rs.getInt("id_article"));
+						article.setNom_article(rs.getString("nom_article"));
+						article.setDescription (rs.getString("description"));
+						article.setDate_debut_encheres(rs.getDate("date_debut_encheres").toLocalDate());
+						article.setDate_fin_encheres(rs.getDate("date_fin_encheres").toLocalDate());
+						article.setMise_a_prix(rs.getInt("prix_initial"));
+						article.setPrix_vente(rs.getInt("prix_vente"));
+
+						listeEncheres.add(article);
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			// return mesVentesTerminees;
+			return listeEncheres;
+
+		}
+
+	 
+	 
+	 
 }// fin public
