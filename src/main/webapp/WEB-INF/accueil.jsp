@@ -6,154 +6,111 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
 <title>Accueil</title>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="/webapp/CSS/commun.css"> -->
-<style>
-.article {
-	border: 1px solid #ccc; /* Bordure autour de chaque article */
-	padding: 10px; /* Espace intérieur pour le contenu de l'article */
-	margin-bottom: 20px; /* Marge inférieure pour séparer les articles */
-}
-</style>
+<link rel="stylesheet" type="text/css" href="CSS/commun.css">
+
 </head>
 <body>
+	<main class="container">
+		<article class="grid">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
 
-	<c:if test="${empty idUtilisateur}">
-		<a href="ServletConnexion">S'inscrire - se connecter</a>
-		<div id="ListeDesEncheres">
-			<c:forEach items="${ListeEncheres}" var="article">
-				<div class="article">
-					<h2>
-						<a href="ServletEncherir?id_Article=${article.id_Article}"
-							data-id="${article.id_Article}">${article.nom_article}</a>
-					</h2>
-					<%--  <h2> <a href ="ServletEncherir"> ${article.nom_article}</a></h2> --%>
-					<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-					<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-					<p>Prix initial : ${article.mise_a_prix}</p>
-					<p>Vendeur : ${article.utilisateur.pseudo}</p>
+					<c:if test="${empty idUtilisateur}">
+						<a href="ServletConnexion">S'inscrire - se connecter</a>
+						<div id="ListeDesEncheres">
+							<c:forEach items="${ListeEncheres}" var="article">
+								<div class="article">
+									<h2>
+										<a href="ServletEncherir?id_Article=${article.id_Article}"
+											data-id="${article.id_Article}">${article.nom_article}</a>
+									</h2>
+									<%--  <h2> <a href ="ServletEncherir"> ${article.nom_article}</a></h2> --%>
+									<p>Date de début d'enchères :
+										${article.date_debut_encheres}</p>
+									<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
+									<p>Prix initial : ${article.mise_a_prix}</p>
+									<p>Vendeur : ${article.utilisateur.pseudo}</p>
+								</div>
+							</c:forEach>
+						</div>
+					</c:if>
+
+
+					<c:if test="${not empty idUtilisateur}">
+						<h2>Bienvenue, ${pseudoUtilisateur}</h2>
+						<br>
+						<a class="navbar-brand" href="ServletVendreUnArticle">Vendre
+							un article</a>
+						<a class="navbar-brand" href="ServletMonProfil">Mon profil</a>
+						<a class="navbar-brand" href="ServletDeconnexion">Déconnexion</a>
+						<button class="navbar-toggler" type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarSupportedContent"
+							aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 				</div>
-			</c:forEach>
-		</div>
-	</c:if>
+			</nav>
+			<br> <br>
 
-	<c:if test="${not empty idUtilisateur}">
-		<h2>Bienvenue, ${pseudoUtilisateur}</h2>
-		<a href="ServletVendreUnArticle">Vendre un article</a>
-		<a href="ServletMonProfil">Mon profil</a>
-		<a href="ServletDeconnexion">Déconnexion</a>
-		
-	
-
-	<!-- CI-DESSOUS, AFFICHAGE UNE FOIS CONNECTE -->
-	<form action="ServletAccueil" method="post">
-		<div>
-			<input type="radio" name="toggle" value="achats" checked>Achats
-			<div id="achatsFilters">
-				<input type="checkbox" name="enchères" id="enchèresCheckbox">
-				<label for="enchèresCheckbox">Enchères</label>
+			<form id="toggleForm">
+				<input type="radio" name="toggle" value="achats" checked>Achats
+				<div id="achatsFilters">
+								<input type="checkbox" name="enchères" id="enchèresCheckbox">
+								<label for="enchèresCheckbox">Enchères</label> <input
+									type="checkbox" name="mesEnchères" id="mesEnchèresCheckbox">
+								<label for="mesEnchèresCheckbox">Mes enchères</label> <input
+									type="checkbox" name="mesEnchèresRemportées"
+									id="mesEnchèresRemportéesCheckbox"> <label
+									for="mesEnchèresRemportéesCheckbox">Mes enchères emportées</label>
+				<input type="radio" name="toggle" value="ventes">Mes Ventes	<br> <input type="submit" value="Afficher">
+				<div id="ventesFilters">
+								<input type="checkbox" name="mesVentesEnCours" id="mesVentesEnCoursCheckbox">
+								<label for="mesVentesEnCoursCheckbox">Mes ventes en cours</label> 
+								<input type="checkbox" name="mesVentesAVenir" id="mesVentesAVenirCheckbox">
+								<label for="mesVentesAVenirCheckbox">Mes ventes programmées</label> 
+								<input type="checkbox" name="mesEnchèresRemportées"	id="mesVentesTermineesCheckbox"> 
+								<label for="mesVentesTermineesCheckbox">Mes ventes terminées</label>
+								
+								<input type="submit" value="Filtrer">
 				
-				<input type="checkbox" name="mesEnchères" id="mesEnchèresCheckbox">
-				<label for="mesEnchèresCheckbox">Mes enchères</label>
 				
-				<input type="checkbox" name="mesEnchèresRemportées" id="mesEnchèresRemportéesCheckbox"> 
-				<label for="mesEnchèresRemportéesCheckbox">Mes enchères remportées</label>
-			</div>
-		</div>
-
-		<input type="radio" name="toggle" value="ventes">Ventes
-		<div id="ventesFilters">
-			<input type="checkbox" name="mesVentesEnCours" id="enchèresCheckbox">
-			<label for="mesVentesEnCoursCheckbox"> Mes ventes en cours</label>
-			
-			<input type="checkbox" name="mesVentesAVenir" id="mesVentesAVenirCheckbox">
-			<label for="mesVentesAVenirCheckbox">Mes ventes à venir</label>
-			
-			<input type="checkbox" name="mesVentesTerminees"	id="mesVentesTermineesCheckbox"> 
-			<label for="mesVentesTermineesCheckbox">Mes ventes terminées</label>
-		</div>
-
-		<input type="submit" value="Filtrer">
-
-		<div id="ListeDesEncheres">
-			<c:forEach items="${ListeEncheres}" var="article">
-				<div class="article">
-					<h2>
-						<a href="ServletEncherir?id_Article=${article.id_Article}"
-							data-id="${article.id_Article}">${article.nom_article}</a>
-					</h2>
-					<%--  <h2> <a href ="ServletEncherir"> ${article.nom_article}</a></h2> --%>
-					<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-					<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-					<p>Prix initial : ${article.mise_a_prix}</p>
-					<p>Vendeur : ${article.utilisateur.pseudo}</p>
-				</div>
-			</c:forEach>
-		</div>
+			</form>
+			<br> <br>
+		</article>
 		</c:if>
 		
-
-		<%-- 	
-		<div id="ventesFilters">
-			<h3>Mes articles en vente actuellement</h3>
-			<input type="checkbox" name="mesVentesEnCours"
-				id="mesVentesEnCoursCheckbox"> <label
-				for="mesVentesEnCoursCheckbox">Mes ventes en cours</label>
-			<div id="ListeDeMesVentes">
-				<c:forEach items="${mesArticlesEnVente}" var="article">
-					<div class="article">
-						<h2>
-							<a href="ServletEncherir?id_Article=${article.id_Article}"
-								data-id="${article.id_Article}">${article.nom_article}</a>
-						</h2>
-						<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-						<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-						<p>Prix initial : ${article.mise_a_prix}</p>
-						<p>Vendeur : ${article.utilisateur.pseudo}</p>
-					</div>
-				</c:forEach>
-			</div>
-
-			<h3>Mes ventes à venir</h3>
-			<input type="checkbox" name="mesVentesAVenir"
-				id="mesVentesAVenirCheckbox"> <label>
-				for="mesVentesAVenirCheckbox">Mes ventes à venir</label>
-			<div id="ListeDeMesVentesAVenir">
-				<c:forEach items="${mesVentesAVenir}" var="article">
-					<div class="article">
-						<h2>
-							<a href="ServletEncherir?id_Article=${article.id_Article}"
-								data-id="${article.id_Article}">${article.nom_article}</a>
-						</h2>
-						<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-						<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-						<p>Prix initial : ${article.mise_a_prix}</p>
-						<p>Vendeur : ${article.utilisateur.pseudo}</p>
-					</div>
-				</c:forEach>
-			</div>
-
-			<h3>Mes ventes terminées</h3>
-			<input type="checkbox" name="mesVentesTerminees"
-				id="mesVentesTermineesCheckbox"> <label
-				for="mesVentesTermineesCheckbox">Mes ventes terminées</label>
-			<div id="ListeDeMesVentesTerminees">
-				<c:forEach items="${mesVentesTerminees}" var="article">
-					<div class="article">
-						<h2>
-							<a href="ServletEncherir?id_Article=${article.id_Article}"
-								data-id="${article.id_Article}">${article.nom_article}</a>
-						</h2>
-						<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
-						<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
-						<p>Prix initial : ${article.mise_a_prix}</p>
-						<p>Vendeur : ${article.utilisateur.pseudo}</p>
-					</div>
-				</c:forEach>
-			</div> --%>
+		<div id="ListeDesEncheres">
+			<c:forEach items="${ListeEncheres}" var="article">
+				<!--  <div class="article">-->
+				<div class="col">
+					<div class="card shadow hover">
+						<img src="Image/galeriendetrocenchere.jpg" class="card-img-top"
+							alt="imageEnchere">
+						<div class="card-body">
+							<h5 class="card-title">
+								<h2>
+									<a href="ServletEncherir?id_Article=${article.id_Article}"
+										data-id="${article.id_Article}">${article.nom_article}</a>
+								</h2>
+								<%--  <h2> <a href ="ServletEncherir"> ${article.nom_article}</a></h2> --%>
+								<p>Date de début d'enchères : ${article.date_debut_encheres}</p>
+								<p>Date de fin d'enchères : ${article.date_fin_encheres}</p>
+								<p>Prix initial : ${article.mise_a_prix}</p>
+								<p>Vendeur : ${article.utilisateur.pseudo}</p>
+						</div>
+			</c:forEach>
 		</div>
-	</form>
+	</main>
 </body>
 </html>

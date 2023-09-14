@@ -1,5 +1,83 @@
 @charset "UTF-8";
 
-h1{
-	color: blue;
+.bandeau {
+            background-color: rgb(0, 128, 255); /* Couleur de fond du bandeau */
+            color: #fff; /* Couleur du texte */
+            padding: 10px; /* Espace intérieur du bandeau */
+            display: flex; /* Utilisation de Flexbox pour le positionnement */
+            align-items: center; /* Centrer le contenu verticalement */
+            background:linear-gradient(rgb(0, 255, 255),rgb(0, 128, 255));
+
+        }
+.logo {
+            width: 50px; /* Largeur du logo */
+            height: auto; /* Ajustement automatique de la hauteur */
+            margin-right: 10px; /* Marge à droite du logo pour l'espacement */
+            transition: transform .1s;
+        }
+.logo:hover{
+    
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+}
+.titre {
+            flex-grow: 1; /* Occupe tout l'espace disponible restant */
+            text-align: center; /* Centre le texte du titre */
+            font-size: 24px; /* Taille de police du titre */
+        }
+.nav {
+            margin-left: auto; /* Place les liens à gauche */
+        }
+.nav a {
+            text-decoration: none; /* Supprime la soulignement des liens */
+            color: #fff; /* Couleur du texte des liens */
+            margin-right: 20px; /* Marge entre les liens */
+            border : 1px white solid;
+            border-radius: 10px;
+
+        }
+
+a {
+    text-decoration: none; /* Supprime la soulignement des liens */
+    
+}
+
+
+.article {
+    border: 2px solid rgb(0, 0, 0); /* Bordure autour de chaque article */
+    padding: 10px; /* Espace intérieur pour le contenu de l'article */
+    margin-bottom: 20px; /* Marge inférieure pour séparer les articles */
+    border-radius: 10px;
+}
+
+.formulaire{
+     display: flex; /* Utilisation de Flexbox pour aligner horizontalement */
+     flex-wrap: wrap; /* Permet de revenir à la ligne si l'espace est insuffisant */
+     justify-content: space-between; /* Espacement égal entre les éléments */
+     max-width: 400px; /* Largeur maximale du formulaire */
+     margin: 0 auto; /* Centrage horizontal du formulaire */
+     margin-top: 20px;
+}
+.formulaire input, .formulaire label{
+    width: calc(50% - 10px); /* Largeur de chaque champ (50% moins la marge) */
+     margin-bottom: 10px; /* Espacement entre les champs */
+}
+.formulaire button {
+            width: 100%; /* Remplit toute la largeur disponible */
+        }
+
+h1 {
+color: white;
+}
+
+.alignement{
+    
+    /* display: flex;  Utilisation de Flexbox pour aligner horizontalement */
+     flex-wrap: wrap; /* Permet de revenir à la ligne si l'espace est insuffisant */
+    /* justify-content: space-between;  Espacement égal entre les éléments */
+     max-width: 400px; /* Largeur maximale du formulaire */
+     margin: 0 auto; /* Centrage horizontal du formulaire */
+    
+    
 }

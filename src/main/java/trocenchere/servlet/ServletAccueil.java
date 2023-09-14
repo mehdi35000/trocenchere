@@ -63,7 +63,9 @@ public class ServletAccueil extends HttpServlet {
 //		}
 
 		List<Categorie> categorie = CategorieManager.getInstance().selectAllCategorie();
+
 		// System.out.println(categorie.toString());
+		//System.out.println(categorie.toString());
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
