@@ -76,10 +76,10 @@ public class ServletAccueil extends HttpServlet {
 
 		List<Article> listeEncheres = null;
 
-		String toggleOption = request.getParameter("toggle");
+		String toggleForm = request.getParameter("toggle");
 
-		if ("achats".equals(toggleOption)) {
-			System.out.println("achats");
+		//if ("achats".equals(toggleOption)) {
+			//System.out.println("achats");
 
 			if (request.getParameter("enchères") != null) {
 				System.out.println("enchères");
@@ -96,8 +96,8 @@ public class ServletAccueil extends HttpServlet {
 				// TODO : Charger la liste des articles que j'ai gagné
 				// listeEncheres = ArticleManager.getInstance().selectAllArticlesEnVente();
 			}
-		} else {
-			System.out.println("ventes");
+		//} else {
+			//System.out.println("ventes");
 
 			if (request.getParameter("mesVentesEnCours") != null) {
 				System.out.println("mesVentesEnCours");
@@ -118,7 +118,7 @@ public class ServletAccueil extends HttpServlet {
 				listeEncheres = ArticleManager.getInstance().recupererMesVentesTerminees(id_utilisateur);
 				System.out.println(listeEncheres);
 			}
-		}
+		//}
 
 		request.setAttribute("ListeEncheres", listeEncheres);
 

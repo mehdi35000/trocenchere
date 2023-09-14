@@ -63,28 +63,30 @@
 			</nav>
 			<br> <br>
 
-			<form id="toggleForm">
-				<input type="radio" name="toggle" value="achats" checked>Achats
-				<div id="achatsFilters">
+			<!--  <form id="toggleForm">-->
+				<!--  <input type="radio" name="toggle" value="achats" checked>Achats-->
+				<!--  <input type="radio" name="toggle" value="ventes">Mes Ventes-->	
+				
+				<form id="toggleForm" action="ServletAccueil" method="post">
+				
+				<!--  <div id="achatsFilters">-->
 								<input type="checkbox" name="enchères" id="enchèresCheckbox">
-								<label for="enchèresCheckbox">Enchères</label> <input
-									type="checkbox" name="mesEnchères" id="mesEnchèresCheckbox">
-								<label for="mesEnchèresCheckbox">Mes enchères</label> <input
-									type="checkbox" name="mesEnchèresRemportées"
-									id="mesEnchèresRemportéesCheckbox"> <label
-									for="mesEnchèresRemportéesCheckbox">Mes enchères emportées</label>
-				<input type="radio" name="toggle" value="ventes">Mes Ventes	<br> <input type="submit" value="Afficher">
-				<div id="ventesFilters">
+								<label for="enchèresCheckbox">Enchères</label>
+								<input type="checkbox" name="mesEnchères" id="mesEnchèresCheckbox">
+								<label for="mesEnchèresCheckbox">Mes enchères</label> 
+								<input type="checkbox" name="mesEnchèresRemportées"	id="mesEnchèresRemportéesCheckbox"> 
+								<label for="mesEnchèresRemportéesCheckbox">Mes enchères emportées</label>
+								
+								<!--  <input type="submit" value="Afficher">-->
+				<!-- <div id="ventesFilters">-->
 								<input type="checkbox" name="mesVentesEnCours" id="mesVentesEnCoursCheckbox">
 								<label for="mesVentesEnCoursCheckbox">Mes ventes en cours</label> 
 								<input type="checkbox" name="mesVentesAVenir" id="mesVentesAVenirCheckbox">
 								<label for="mesVentesAVenirCheckbox">Mes ventes programmées</label> 
-								<input type="checkbox" name="mesEnchèresRemportées"	id="mesVentesTermineesCheckbox"> 
+								<input type="checkbox" name="mesVentesTerminees"	id="mesVentesTermineesCheckbox"> 
 								<label for="mesVentesTermineesCheckbox">Mes ventes terminées</label>
 								
 								<input type="submit" value="Filtrer">
-				
-				
 			</form>
 			<br> <br>
 		</article>
