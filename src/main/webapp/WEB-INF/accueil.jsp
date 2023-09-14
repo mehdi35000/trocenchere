@@ -103,6 +103,7 @@
 
         <br> <br>
 
+		<c:if test="${not empty idUtilisateur}">
         <div id="ListeDesEncheres">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <c:forEach items="${ListeEncheres}" var="article">
@@ -132,6 +133,7 @@
             </div>
 
         </div>
+        </c:if>
 
     </main>
 </body>
